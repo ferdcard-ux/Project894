@@ -99,3 +99,7 @@ venv/bin/python app.py
 ## Alcance actual
 
 El proyecto cuenta con una versión estable (1.1.0) con capacidades de extracción resiliente y empaquetado distribuible mediante AppImage para facilitar su uso en sistemas Linux.
+
+## IMPORTANTE:
+
+Al descargar y utilizar Project894, aceptas los términos establecidos en nuestro DISCLAIMER.md y LICENSE. Esta herramienta es de uso personal y académico.
