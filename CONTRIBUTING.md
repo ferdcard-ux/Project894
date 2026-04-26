@@ -2,68 +2,47 @@
 
 ## Objetivo
 
-Este documento define una base mínima para colaborar de forma consistente sobre `Project894`.
+Este repositorio recibe cambios relacionados con distribución pública, documentación y publicación de releases de `Project894`.
 
-## Requisitos de desarrollo
+No es un repositorio de desarrollo de código fuente.
 
-- Python 3.10 o superior
-- Entorno virtual local
-- Dependencias de `requirements.txt`
-- Navegador de Playwright instalado
+## Alcance permitido
 
-## Preparación del entorno
+Cambios apropiados para este repositorio:
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-playwright install chromium
-```
+- documentación pública
+- changelog y release notes
+- instrucciones de instalación por plataforma
+- material de publicación de releases
+- referencias a artefactos binarios
 
-## Ejecución local
+Cambios fuera de alcance:
 
-```bash
-venv/bin/python app.py
-```
-
-## Convenciones recomendadas
-
-- Mantener la UI en `src/ui/`
-- Mantener la lógica de persistencia y seguridad en `src/core/`
-- Mantener scraping y navegación web en `src/scraper/`
-- Evitar mezclar lógica de acceso a datos dentro de la interfaz
-- No subir datos reales ni secretos almacenados en `data/`
-- Documentar cambios funcionales relevantes en `CHANGELOG.md`
+- lógica de aplicación
+- interfaz interna
+- scraping
+- seguridad implementativa
+- empaquetado técnico dentro del código fuente privado
 
 ## Antes de abrir cambios
 
-- Verificar sintaxis mínima de Python:
+Verifica al menos:
 
-```bash
-venv/bin/python -m py_compile app.py src/ui/main_window.py
-```
+- que la documentación no revele código o rutas internas innecesarias
+- que los nombres de artefactos públicos sean correctos
+- que Linux y Windows estén cubiertos cuando la versión pública aplique a ambas plataformas
+- que `CHANGELOG.md` y `RELEASE_NOTES.md` estén sincronizados
 
-- Probar manualmente, al menos:
-  - inicio de sesión
-  - carga de vistas
-  - edición de instructor
-  - edición de estado
-  - exportación a Excel
+## Publicación de releases
 
-## Alcance de futuras contribuciones
+La guía operativa para publicar nuevas versiones está en:
 
-Áreas especialmente sensibles:
-
-- autenticación con Zajuna
-- cifrado y caché local
-- integridad de la base SQLite
-- scraping frente a cambios de selectores
-- empaquetado AppImage
+- [docs/PUBLISHING.md](docs/PUBLISHING.md)
 
 ## Commits
 
-Se recomienda usar mensajes breves y orientados a intención, por ejemplo:
+Se recomiendan mensajes breves y orientados a intención, por ejemplo:
 
-- `feat: add AppImage metadata`
-- `fix: preserve status colors in evidence table`
-- `docs: add repository guides`
+- `docs: update public installation guide`
+- `release: publish notes for 1.2.0`
+- `docs: standardize public distribution workflow`

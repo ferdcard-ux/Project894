@@ -8,17 +8,18 @@ Automatiza la consulta y gestión local de evidencias académicas desde Zajuna e
 
 Sí, para validar credenciales y extraer información desde Zajuna. Solo algunos accesos pueden funcionar en modo offline si ya existe caché local válida.
 
-## ¿Dónde se guardan los datos?
+## ¿Este repositorio contiene el código fuente?
 
-En la carpeta `data/`, principalmente en una base SQLite local.
+No. Este repositorio es únicamente para distribución pública, documentación y releases binarios.
 
-## ¿La base de datos está protegida?
+## ¿Dónde descargo la aplicación?
 
-Sí. El proyecto incluye cifrado de base de datos y caché local cifrada de credenciales.
+Desde la sección de releases del repositorio.
 
-## ¿Qué pasa si Zajuna cambia su interfaz?
+## ¿Qué plataformas están publicadas?
 
-El scraping puede fallar si cambian selectores, formularios, rutas o el flujo de autenticación. En ese caso debe revisarse `src/scraper/scraper_engine.py`.
+- Linux mediante `Project894-x86_64.AppImage`
+- Windows mediante `Project894.exe`
 
 ## ¿Qué tecnologías usa?
 
@@ -29,28 +30,22 @@ El scraping puede fallar si cambian selectores, formularios, rutas o el flujo de
 - `pandas`
 - `openpyxl`
 
-## ¿Cómo ejecuto la app en desarrollo?
+## ¿Cómo instalo la versión Linux?
 
-```bash
-venv/bin/python app.py
-```
+Descarga `Project894-x86_64.AppImage`, dale permiso de ejecución y ejecútalo.
 
-## ¿Necesito instalar algo adicional además de `pip install -r requirements.txt`?
+## ¿Cómo instalo la versión Windows?
 
-Sí. También debes instalar Chromium para Playwright:
+Descarga `Project894.exe` y ejecútalo directamente.
 
-```bash
-playwright install chromium
-```
+## ¿Puedo construir la app desde este repositorio?
 
-## ¿La aplicación ya está lista para AppImage?
+No. El build y el código fuente se mantienen fuera de este repositorio público.
 
-Todavía no. Antes debe incorporarse el icono final y luego preparar el empaquetado.
+## ¿Puedo compartir binarios descargados con otros usuarios?
 
-## ¿Puedo compartir la carpeta `data/`?
+Solo si provienen de una release pública verificada y respetando la licencia y el disclaimer del proyecto.
 
-No es recomendable. Allí pueden existir claves locales, caché cifrada y base de datos con información operativa.
+## ¿Dónde se documenta el proceso de publicación?
 
-## ¿Puedo usar varias cuentas?
-
-La capa de seguridad ya contempla varias cuentas en caché local, aunque la sesión activa se maneja de una a la vez.
+En [docs/PUBLISHING.md](PUBLISHING.md).

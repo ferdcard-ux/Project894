@@ -1,47 +1,38 @@
 # Release Notes
 
-## Version 1.1.0
+## Version 1.2.0
 
-Fecha de referencia: `2026-04-21`
+Fecha de referencia: `2026-04-26`
 
 ### Resumen
 
-`Project894` consolida una aplicación de escritorio para automatizar la consulta y gestión de evidencias de curso en Zajuna, con enfoque en operación local, edición rápida y resguardo de información sensible. Esta versión introduce mejoras críticas en la estabilidad de la extracción y el empaquetado oficial.
+`Project894` consolida una aplicación de escritorio para automatizar la consulta y gestión de evidencias académicas en Zajuna. Esta release pública unifica la distribución de Linux y Windows bajo una misma versión funcional, con mejoras de usabilidad, filtros por vista y una experiencia visual basada en `Hybrid Card-List View`.
 
-### Incluye
+### Artefactos publicados
 
-- Interfaz nativa de escritorio en `PySide6`
-- Inicio de sesión con documento, tipo de documento y contraseña de Zajuna
-- Extracción de:
-  - todas las evidencias del curso
-  - evidencias evaluadas
-- Persistencia local con SQLite
-- Edición manual de `Instructor` y `Estado`
-- Búsqueda integrada en la tabla actual
-- Exportación a archivos `.xlsx`
-- Cifrado de base de datos y caché local de acceso
-- **Paquete AppImage para Linux**
+- `Project894-x86_64.AppImage` para Linux
+- `Project894.exe` para Windows
 
-### Mejoras relevantes de la iteración actual
+### Novedades funcionales
 
-- **Resiliencia en Scraping**: Detección de redirecciones y descubrimiento dinámico de cursos.
-- **Fallbacks de Navegación**: Rutas alternativas para acceder a reportes de calificaciones.
-- Tabla principal optimizada para edición rápida.
-- Anchos de columnas ajustados para mejorar legibilidad.
-- Altura de filas autoajustable según el contenido de `Evidencia`.
-- Mejor separación entre extracción, persistencia y UI.
+- Vista híbrida `Card-List` para `Todas Las Evidencias`
+- Vista de `Evidencias Evaluadas` con filtros específicos
+- Filtros separados por vista
+- Filtro `Próximas a vencer`
+- Exportación a Excel respetando la vista filtrada actual
+- Mejora de la cabecera visual del login
+- Validación de instructor más estable
 
-### Dependencias principales
+### Mejoras técnicas visibles en la release
 
-- `PySide6`
-- `playwright`
-- `cryptography`
-- `pandas`
-- `openpyxl`
-- `plyer`
+- Lógica de evaluación corregida para aceptar únicamente letras válidas
+- Barra de herramientas simplificada para reducir ruido operativo
+- Documentación pública alineada con la versión 1.2.0
+- Distribución preparada para dos plataformas sin exponer código fuente
 
 ### Consideraciones operativas
 
-- Requiere `playwright install chromium` antes del primer uso en un entorno limpio (o usar el AppImage que ya lo gestiona).
-- El empaquetado AppImage está disponible en `dist/`.
-- Se implementaron fallbacks de navegación para mitigar inestabilidades en el portal de Zajuna.
+- Linux: usar el archivo `.AppImage` con permisos de ejecución
+- Windows: ejecutar `Project894.exe`
+- Los datos siguen siendo locales al equipo del usuario
+- La aplicación puede depender de conectividad con Zajuna para tareas de extracción en línea

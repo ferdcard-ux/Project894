@@ -1,83 +1,84 @@
-# Project894
+# Project894 Public
 
-Aplicación de escritorio en PySide6 para automatizar la extracción, revisión y gestión local de evidencias académicas desde Zajuna.
+Repositorio público de distribución de `Project894`.
 
-La aplicación permite autenticarse con credenciales de Zajuna, extraer evidencias del curso, consultar evidencias evaluadas, editar instructor y estado en una base SQLite local cifrada, y exportar resultados a Excel.
+Este repositorio no incluye código fuente de la aplicación. Su propósito es centralizar:
 
-## Estado del proyecto
+- documentación pública de uso e instalación
+- notas de versión
+- instrucciones de publicación de artefactos
+- releases binarios para Linux y Windows
 
-- Versión actual de la aplicación: `1.1.0`
-- Estado del empaquetado AppImage: completado
-- Ubicación del AppImage: `dist/Project894-x86_64.AppImage`
+## Estado actual
 
-## Características principales
+- Versión pública actual: `1.2.0`
+- Plataformas distribuidas: `Linux x86_64` y `Windows x64`
+- Artefactos esperados por release:
+  - `Project894-x86_64.AppImage`
+  - `Project894.exe`
 
-- Interfaz nativa en `PySide6`
-- Inicio de sesión con validación en Zajuna
-- Caché local cifrada de credenciales para contingencias offline
-- Base de datos local cifrada durante el reposo
-- Vista `Todas Las Evidencias` con edición de `Instructor` y `Estado`
-- Vista `Evidencias Evaluadas` con ítem, calificación y retroalimentación
-- Búsqueda dentro de la tabla activa
-- Exportación a Excel
-- Scraping automatizado con `Playwright`
+## Qué incluye la aplicación
 
-## Requisitos
+`Project894` es una aplicación de escritorio para automatizar la consulta y gestión local de evidencias académicas desde Zajuna.
 
-- Python 3.10 o superior
-- Linux de escritorio
-- Dependencias de `requirements.txt`
-- Navegador de Playwright instalado
+Funciones principales:
 
-## Puesta en marcha
+- autenticación con credenciales institucionales
+- extracción de `Todas Las Evidencias`
+- consulta de `Evidencias Evaluadas`
+- vista híbrida `Card-List`
+- filtros por vista y por contexto
+- edición local de instructor y estado
+- exportación a Excel
+- persistencia local cifrada
 
-1. Crear y activar un entorno virtual.
-2. Instalar dependencias:
+## Cómo obtener la aplicación
+
+Las compilaciones públicas deben descargarse desde la sección de releases del repositorio.
+
+Versiones publicadas por plataforma:
+
+- Linux: `Project894-x86_64.AppImage`
+- Windows: `Project894.exe`
+
+## Instalación rápida
+
+### Linux
+
+1. Descarga `Project894-x86_64.AppImage` desde el release deseado.
+2. Otorga permiso de ejecución:
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-playwright install chromium
+chmod +x Project894-x86_64.AppImage
 ```
 
-3. Ejecutar la aplicación:
+3. Ejecuta la aplicación:
 
 ```bash
-python3 app.py
+./Project894-x86_64.AppImage
 ```
 
-Si el proyecto ya trae un entorno local funcional, también puede ejecutarse con:
+### Windows
 
-```bash
-venv/bin/python app.py
-```
+1. Descarga `Project894.exe` desde el release deseado.
+2. Ejecuta el archivo.
+3. Si Windows SmartScreen muestra una advertencia, valida el origen del archivo antes de continuar.
 
 ## Estructura del repositorio
 
+Este repositorio público mantiene únicamente documentación y material de publicación:
+
 ```text
 .
-├── app.py
-├── requirements.txt
-├── src/
-│   ├── core/
-│   ├── scraper/
-│   └── ui/
-├── data/
-├── docs/
-└── scratch/
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── DISCLAIMER.md
+├── LICENSE
+├── README.md
+├── RELEASE_NOTES.md
+├── SECURITY.md
+└── docs/
 ```
-
-## Módulos principales
-
-- `app.py`: punto de entrada y estado global de la sesión
-- `src/ui/login_dialog.py`: autenticación inicial
-- `src/ui/main_window.py`: interfaz principal, tablas, búsqueda y exportación
-- `src/ui/workers.py`: ejecución en segundo plano
-- `src/core/database.py`: persistencia SQLite
-- `src/core/security.py`: cifrado, claves y caché local
-- `src/core/export_engine.py`: exportación a Excel
-- `src/scraper/scraper_engine.py`: integración con Zajuna por Playwright
 
 ## Documentación disponible
 
@@ -88,18 +89,12 @@ venv/bin/python app.py
 - [docs/USERGUIDE.md](docs/USERGUIDE.md)
 - [docs/FAQ.md](docs/FAQ.md)
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- [docs/PUBLISHING.md](docs/PUBLISHING.md)
 
-## Datos y seguridad
+## Alcance del repositorio público
 
-- La base local se maneja en `data/project894.db`
-- El archivo puede mantenerse cifrado fuera de la sesión activa
-- Las credenciales en caché se guardan cifradas localmente
-- Los archivos sensibles de `data/` no deben publicarse en un repositorio remoto
+Este repositorio está pensado para distribución y comunicación pública del producto terminado. El desarrollo interno, el empaquetado técnico y la base de código se mantienen en repositorios locales o privados separados.
 
-## Alcance actual
+## Importante
 
-El proyecto cuenta con una versión estable (1.1.0) con capacidades de extracción resiliente y empaquetado distribuible mediante AppImage para facilitar su uso en sistemas Linux.
-
-## IMPORTANTE:
-
-Al descargar y utilizar Project894, aceptas los términos establecidos en nuestro DISCLAIMER.md y LICENSE. Esta herramienta es de uso personal y académico.
+Al descargar y utilizar `Project894`, aceptas los términos establecidos en [DISCLAIMER.md](DISCLAIMER.md) y [LICENSE](LICENSE).

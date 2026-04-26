@@ -2,44 +2,37 @@
 
 ## Resumen
 
-`Project894` maneja credenciales de acceso, caché local cifrada y una base de datos SQLite con información operativa. Por eso, cualquier cambio en seguridad debe tratarse con cuidado.
+Este repositorio público no almacena código fuente ni datos operativos de usuarios. Aun así, la publicación de binarios y documentación debe tratarse con cuidado para evitar exposición de información sensible.
 
-## Mecanismos actuales
+## Qué no debe publicarse aquí
 
-- Derivación de claves con `PBKDF2HMAC`
-- Cifrado de archivos con `Fernet`
-- Caché local cifrada para cuentas usadas recientemente
-- Clave dedicada para la base de datos local
-- Soporte de compatibilidad para descifrar bases heredadas
+No deben incluirse en este repositorio:
 
-## Archivos sensibles
+- bases de datos locales de usuarios
+- archivos de caché o credenciales
+- claves, sales o secretos de cifrado
+- rutas privadas de compilación
+- código fuente interno o artefactos intermedios de desarrollo
 
-Los siguientes archivos no deben compartirse públicamente:
+## Riesgos relevantes para el repositorio público
 
-- `data/project894.db`
-- `data/app_db.key`
-- `data/login_cache.bin`
-- `data/login_cache.key`
-- `data/salt.bin`
+- publicar por error un binario incorrecto o no validado
+- exponer documentación con instrucciones internas o rutas privadas
+- adjuntar archivos con datos operativos reales a un release público
+- mezclar artefactos de plataformas o versiones distintas en una misma release
 
-## Riesgos operativos conocidos
+## Buenas prácticas de publicación
 
-- La contraseña puede quedar disponible localmente en caché cifrada para habilitar acceso offline
-- El scraping depende de una plataforma externa que puede cambiar selectores o flujos
-- La base de datos permanece descifrada durante la sesión activa
-
-## Buenas prácticas
-
-- No commitear archivos de `data/` con información real
-- No reutilizar los mismos archivos de claves entre entornos no controlados
-- Hacer pruebas con cuentas no productivas cuando sea posible
-- Revisar los cambios de seguridad junto con `src/core/security.py` y `src/ui/login_dialog.py`
+- verificar nombre, versión y plataforma de cada artefacto antes de subirlo
+- publicar únicamente binarios finales destinados a distribución
+- revisar que `README.md`, `CHANGELOG.md` y `RELEASE_NOTES.md` coincidan con la versión publicada
+- mantener separados los procesos internos de build del repositorio público
 
 ## Reporte de hallazgos
 
-Si detectas una vulnerabilidad o exposición de datos:
+Si detectas una exposición o error de publicación:
 
-1. No la publiques junto con muestras reales.
-2. Reproduce el caso en un entorno controlado.
-3. Documenta alcance, impacto y pasos de mitigación.
-4. Corrige primero la exposición de secretos antes de compartir cambios.
+1. retira o reemplaza el artefacto comprometido lo antes posible
+2. evita compartir públicamente datos sensibles del incidente
+3. documenta alcance, impacto y mitigación
+4. corrige primero la exposición antes de ampliar la comunicación pública
