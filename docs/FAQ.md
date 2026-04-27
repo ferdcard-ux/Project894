@@ -21,6 +21,10 @@ Desde la sección de releases del repositorio.
 - Linux mediante `Project894-x86_64.AppImage`
 - Windows mediante `Project894.exe`
 
+## ¿La versión 1.2.0 publica Linux y Windows al mismo tiempo?
+
+Sí. Cuando ambos artefactos están disponibles, la publicación pública de `1.2.0` debe conservar juntos `Project894-x86_64.AppImage` y `Project894.exe`.
+
 ## ¿Qué tecnologías usa?
 
 - `PySide6`
@@ -36,7 +40,7 @@ Descarga `Project894-x86_64.AppImage`, dale permiso de ejecución y ejecútalo.
 
 ## ¿Cómo instalo la versión Windows?
 
-Descarga `Project894.exe` y ejecútalo directamente.
+Descarga `Project894.exe` y ejecútalo directamente. Si Windows SmartScreen muestra una advertencia, verifica el origen del archivo antes de continuar.
 
 ## ¿Puedo construir la app desde este repositorio?
 

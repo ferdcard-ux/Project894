@@ -11,6 +11,7 @@ Este documento sigue una convención inspirada en Keep a Changelog y versionado 
 - Repositorio público reestructurado para funcionar como canal de distribución sin código fuente.
 - Documentación principal adaptada para publicar releases binarios de Linux y Windows desde un único punto.
 - Guías actualizadas para reflejar instalación pública, consumo de releases y responsabilidades de publicación.
+- Documentación pública de la versión 1.2.0 ajustada para reflejar la convivencia de `Project894-x86_64.AppImage` y `Project894.exe` dentro del mismo release.
 
 ### Added
 

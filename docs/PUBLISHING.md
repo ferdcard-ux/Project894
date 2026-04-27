@@ -29,6 +29,7 @@ Este repositorio no debe generar builds por sí mismo.
    - documentación adicional si hubo cambios visibles al usuario
 5. Crear o actualizar el tag/release público.
 6. Adjuntar los binarios correspondientes.
+7. Si el release ya existe para esa versión, anexar el nuevo artefacto faltante sin crear un release adicional.
 
 ## Checklist previo a publicar
 
@@ -45,6 +46,7 @@ Este repositorio no debe generar builds por sí mismo.
 - probar descarga del `.exe`
 - verificar que los enlaces públicos funcionen
 - revisar que la descripción del release coincida con la versión
+- confirmar que Linux y Windows conviven en el mismo release cuando aplique
 
 ## Qué no subir a este repositorio
 

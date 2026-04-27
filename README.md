@@ -16,6 +16,9 @@ Este repositorio no incluye código fuente de la aplicación. Su propósito es c
 - Artefactos esperados por release:
   - `Project894-x86_64.AppImage`
   - `Project894.exe`
+- Estado de validación de la versión 1.2.0:
+  - Linux: release pública compartida
+  - Windows: ejecutable nativo validado antes de publicación
 
 ## Qué incluye la aplicación
 
@@ -40,6 +43,8 @@ Versiones publicadas por plataforma:
 
 - Linux: `Project894-x86_64.AppImage`
 - Windows: `Project894.exe`
+
+Para la versión `1.2.0`, ambas plataformas deben convivir dentro del mismo release siempre que los dos artefactos se encuentren disponibles.
 
 ## Instalación rápida
 

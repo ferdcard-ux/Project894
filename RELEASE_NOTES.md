@@ -6,11 +6,12 @@ Fecha de referencia: `2026-04-26`
 
 ### Resumen
 
-`Project894` consolida una aplicación de escritorio para automatizar la consulta y gestión de evidencias académicas en Zajuna. Esta publicación distribuye la versión Linux en formato `AppImage`, con mejoras de usabilidad, filtros por vista y una experiencia visual basada en `Hybrid Card-List View`.
+`Project894` consolida una aplicación de escritorio para automatizar la consulta y gestión de evidencias académicas en Zajuna. Esta publicación distribuye la versión Linux en formato `AppImage` y la versión Windows mediante `Project894.exe`, con mejoras de usabilidad, filtros por vista y una experiencia visual basada en `Hybrid Card-List View`.
 
-### Artefacto publicado
+### Artefactos publicados
 
 - `Project894-x86_64.AppImage` para Linux
+- `Project894.exe` para Windows
 
 ### Novedades funcionales
 
@@ -27,10 +28,11 @@ Fecha de referencia: `2026-04-26`
 - Lógica de evaluación corregida para aceptar únicamente letras válidas
 - Barra de herramientas simplificada para reducir ruido operativo
 - Documentación pública alineada con la versión 1.2.0
-- Distribución Linux publicada sin exponer código fuente
+- Distribución pública preparada para Linux y Windows sin exponer código fuente
 
 ### Consideraciones operativas
 
 - En Linux, otorgue permisos de ejecución al archivo `.AppImage` antes de abrirlo
+- En Windows, valide el origen de `Project894.exe` si SmartScreen solicita confirmación
 - Los datos siguen siendo locales al equipo del usuario
 - La aplicación puede depender de conectividad con Zajuna para tareas de extracción en línea
