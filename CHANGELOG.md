@@ -6,16 +6,22 @@ Este documento sigue una convención inspirada en Keep a Changelog y versionado 
 
 ## [Unreleased]
 
-### Changed
-
-- Repositorio público reestructurado para funcionar como canal de distribución sin código fuente.
-- Documentación principal adaptada para publicar releases binarios de Linux y Windows desde un único punto.
-- Guías actualizadas para reflejar instalación pública, consumo de releases y responsabilidades de publicación.
-- Documentación pública de la versión 1.2.0 ajustada para reflejar la convivencia de `Project894-x86_64.AppImage` y `Project894.exe` dentro del mismo release.
+## [1.3.0] - 2026-04-28
 
 ### Added
 
-- Guía de publicación en `docs/PUBLISHING.md` para centralizar el proceso de releases multiplataforma.
+- Documentación pública de la versión `1.3.0` alineada con la distribución multiplataforma para Linux y Windows.
+- Descripción pública de mejoras visibles en edición local, mensajería operativa y flujo de extracción.
+
+### Changed
+
+- README, release notes y guías públicas actualizados para reflejar la nueva versión `1.3.0`.
+- Narrativa de distribución ajustada para dejar explícito que Linux y Windows comparten una misma versión funcional publicada en un único release.
+
+### Fixed
+
+- Referencias públicas obsoletas a la versión `1.2.0`.
+- Descripción pública incompleta de cambios visibles al usuario en la versión actual.
 
 ## [1.2.0] - 2026-04-26
 

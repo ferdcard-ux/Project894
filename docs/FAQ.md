@@ -21,9 +21,14 @@ Desde la sección de releases del repositorio.
 - Linux mediante `Project894-x86_64.AppImage`
 - Windows mediante `Project894.exe`
 
-## ¿La versión 1.2.0 publica Linux y Windows al mismo tiempo?
+## ¿Qué cambia en la versión 1.3.0?
 
-Sí. Cuando ambos artefactos están disponibles, la publicación pública de `1.2.0` debe conservar juntos `Project894-x86_64.AppImage` y `Project894.exe`.
+La versión `1.3.0` incorpora mejoras visibles para el usuario:
+
+- mejor control de cambios pendientes al editar instructor y fechas
+- mensajes y confirmaciones más consistentes en la interfaz
+- aviso único cuando no existen datos locales en una vista
+- transición de acceso más limpia al abrir la ventana principal
 
 ## ¿Qué tecnologías usa?
 
@@ -41,6 +46,10 @@ Descarga `Project894-x86_64.AppImage`, dale permiso de ejecución y ejecútalo.
 ## ¿Cómo instalo la versión Windows?
 
 Descarga `Project894.exe` y ejecútalo directamente. Si Windows SmartScreen muestra una advertencia, verifica el origen del archivo antes de continuar.
+
+## ¿Linux y Windows comparten la misma versión funcional?
+
+Sí. Este repositorio público se organiza para que una misma versión publicada agrupe los artefactos de Linux y Windows dentro del mismo release, siempre que ambos correspondan al mismo estado funcional del producto.
 
 ## ¿Puedo construir la app desde este repositorio?
 

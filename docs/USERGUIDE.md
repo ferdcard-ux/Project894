@@ -16,6 +16,7 @@
 
 1. Descarga `Project894.exe`.
 2. Ejecuta el archivo.
+3. Si el sistema muestra una advertencia de seguridad, valida que el binario provenga de una release oficial.
 
 ## 3. Inicio de sesión
 
@@ -27,6 +28,8 @@ Al abrir la aplicación:
 4. presiona `Ingresar`
 
 Si la validación en línea falla por conectividad, la aplicación puede permitir acceso offline si ya existe caché local válida.
+
+Durante el acceso, la aplicación puede mostrar mensajes de progreso mientras valida la sesión y prepara la interfaz principal.
 
 ## 4. Vista principal
 
@@ -42,7 +45,7 @@ La interfaz ofrece:
 
 ### Todas Las Evidencias
 
-Permite consultar evidencias del curso y editar campos operativos como instructor y estado.
+Permite consultar evidencias del curso y editar campos operativos como instructor, estado y fechas.
 
 ### Evidencias Evaluadas
 
@@ -55,6 +58,8 @@ La aplicación incluye filtros separados por vista:
 - en `Todas Las Evidencias`, filtrado por estado y `Próximas a vencer`
 - en `Evidencias Evaluadas`, filtrado entre `Todas`, `Evaluadas` y `No Evaluadas`
 
+Si una vista no tiene datos locales, la aplicación muestra un aviso unificado indicando que debe ejecutar la extracción desde Zajuna y que el proceso puede tardar algunos minutos.
+
 ## 7. Exportación
 
 La exportación genera un archivo `.xlsx` a partir de la vista filtrada actual.
@@ -64,3 +69,4 @@ La exportación genera un archivo `.xlsx` a partir de la vista filtrada actual.
 - usa únicamente binarios descargados desde releases oficiales
 - verifica conexión antes de extracciones masivas
 - evita compartir archivos locales con información operativa
+- confirma o descarta cambios pendientes antes de cerrar la aplicación cuando estés editando datos locales

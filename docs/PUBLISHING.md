@@ -11,6 +11,8 @@ Cada release pública debe considerar, cuando aplique:
 - `Project894-x86_64.AppImage`
 - `Project894.exe`
 
+La recomendación general es publicar ambos artefactos dentro del mismo release cuando correspondan a la misma versión funcional del producto.
+
 ## Fuente de los binarios
 
 Los binarios deben venir de los repositorios internos o locales donde se mantiene el código fuente y el flujo de empaquetado.
@@ -29,7 +31,8 @@ Este repositorio no debe generar builds por sí mismo.
    - documentación adicional si hubo cambios visibles al usuario
 5. Crear o actualizar el tag/release público.
 6. Adjuntar los binarios correspondientes.
-7. Si el release ya existe para esa versión, anexar el nuevo artefacto faltante sin crear un release adicional.
+7. Verificar que la descripción del release refleje correctamente Linux y Windows.
+8. Si el release ya existe para esa versión, anexar el nuevo artefacto faltante sin crear un release adicional.
 
 ## Checklist previo a publicar
 
@@ -39,6 +42,7 @@ Este repositorio no debe generar builds por sí mismo.
 - licencia y disclaimer presentes
 - ausencia total de código fuente
 - ausencia de datos de usuario o artefactos intermedios
+- coherencia entre la documentación pública y la versión funcional distribuida en ambas plataformas
 
 ## Checklist posterior a publicar
 

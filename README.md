@@ -11,7 +11,7 @@ Este repositorio no incluye código fuente de la aplicación. Su propósito es c
 
 ## Estado actual
 
-- Versión pública actual: `1.2.0`
+- Versión pública actual: `1.3.0`
 - Plataformas distribuidas: `Linux x86_64` y `Windows x64`
 - Artefactos esperados por release:
   - `Project894-x86_64.AppImage`
@@ -31,9 +31,11 @@ Funciones principales:
 - consulta de `Evidencias Evaluadas`
 - vista híbrida `Card-List`
 - filtros por vista y por contexto
-- edición local de instructor y estado
+- edición local de instructor, estado y fechas
 - exportación a Excel
 - persistencia local cifrada
+- mensajes operativos unificados
+- control de cambios pendientes antes de cerrar o salir
 
 ## Cómo obtener la aplicación
 
@@ -44,7 +46,7 @@ Versiones publicadas por plataforma:
 - Linux: `Project894-x86_64.AppImage`
 - Windows: `Project894.exe`
 
-Para la versión `1.2.0`, ambas plataformas deben convivir dentro del mismo release siempre que los dos artefactos se encuentren disponibles.
+Ambos artefactos deben corresponder a la misma versión funcional publicada en el release.
 
 ## Instalación rápida
 
@@ -99,6 +101,8 @@ Este repositorio público mantiene únicamente documentación y material de publ
 ## Alcance del repositorio público
 
 Este repositorio está pensado para distribución y comunicación pública del producto terminado. El desarrollo interno, el empaquetado técnico y la base de código se mantienen en repositorios locales o privados separados.
+
+La documentación pública debe describir la experiencia del producto de forma consistente entre Linux y Windows, aun cuando cada plataforma utilice un artefacto binario distinto.
 
 ## Importante
 

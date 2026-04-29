@@ -12,6 +12,7 @@ El repositorio se organiza en cuatro piezas:
 - changelog y release notes
 - guías de instalación para usuarios finales
 - guía de publicación de releases binarios
+- releases que agrupan artefactos equivalentes para Linux y Windows
 
 ## Modelo de distribución
 
@@ -47,6 +48,7 @@ Project894-Public
 - comunicación de cambios por versión
 - documentación de instalación y uso
 - referencias públicas de soporte y licencia
+- consolidación de una narrativa multiplataforma por release
 
 ## Objetivo de esta separación
 
@@ -54,3 +56,4 @@ Project894-Public
 - concentrar las descargas en un único punto público
 - mantener Linux y Windows bajo una sola narrativa de release
 - reducir el riesgo de publicar material interno por error
+- asegurar que la documentación pública represente la misma versión funcional en ambas plataformas
