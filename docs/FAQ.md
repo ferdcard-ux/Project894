@@ -1,27 +1,50 @@
 # FAQ
 
-## ¿Qué hace Project894?
+## Que hace Project894?
 
-Automatiza la consulta y gestión local de evidencias académicas desde Zajuna en una aplicación de escritorio.
+Automatiza la consulta y gestion local de evidencias academicas desde Zajuna en una aplicacion de escritorio.
 
-## ¿Necesita internet?
+## Necesita internet?
 
-Sí, para validar credenciales y extraer información desde Zajuna. Solo algunos accesos pueden funcionar en modo offline si ya existe caché local válida.
+Si, para validar credenciales y extraer informacion desde Zajuna. Solo algunos accesos pueden funcionar en modo offline si ya existe cache local valida.
 
-## ¿Este repositorio contiene el código fuente?
+## Este repositorio contiene el codigo fuente?
 
-No. Este repositorio es únicamente para distribución pública, documentación y releases binarios.
+No. Este repositorio es unicamente para distribucion publica, documentacion y releases binarios.
 
-## ¿Dónde descargo la aplicación?
+## Donde descargo la aplicacion?
 
-Desde la sección de releases del repositorio.
+Desde la seccion de releases del repositorio.
 
-## ¿Qué plataformas están publicadas?
+## Que plataformas estan publicadas?
 
 - Linux mediante `Project894-x86_64.AppImage`
 - Windows mediante `Project894.exe`
 
-## ¿Qué tecnologías usa?
+## Que cambia en la version 1.3.0?
+
+La version `1.3.0` incorpora mejoras visibles para el usuario:
+
+- mejor control de cambios pendientes al editar instructor y fechas
+- mensajes y confirmaciones mas consistentes en la interfaz
+- aviso unico cuando no existen datos locales en una vista
+- transicion de acceso mas limpia al abrir la ventana principal
+- mejor trazabilidad de errores en Windows gracias a la ruta explicita de `auth_debug.log`
+
+## Donde se guardan los datos en Windows?
+
+El `.exe` guarda sus datos operativos en `LOCALAPPDATA\\Project894\\data`.
+
+Alli se encuentran la base local, la cache cifrada y los logs de soporte.
+
+## Donde encuentro el log si falla Zajuna o la extraccion?
+
+El archivo principal es `auth_debug.log`.
+
+- En el `.exe` de Windows queda en `LOCALAPPDATA\\Project894\\data\\auth_debug.log`
+- La aplicacion muestra esa ruta exacta cuando ocurre un error de autenticacion o scraping
+
+## Que tecnologias usa?
 
 - `PySide6`
 - `Playwright`
@@ -30,22 +53,26 @@ Desde la sección de releases del repositorio.
 - `pandas`
 - `openpyxl`
 
-## ¿Cómo instalo la versión Linux?
+## Como instalo la version Linux?
 
-Descarga `Project894-x86_64.AppImage`, dale permiso de ejecución y ejecútalo.
+Descarga `Project894-x86_64.AppImage`, dale permiso de ejecucion y ejecutalo.
 
-## ¿Cómo instalo la versión Windows?
+## Como instalo la version Windows?
 
-Descarga `Project894.exe` y ejecútalo directamente.
+Descarga `Project894.exe` y ejecutalo directamente. Si Windows SmartScreen muestra una advertencia, verifica el origen del archivo antes de continuar.
 
-## ¿Puedo construir la app desde este repositorio?
+## Linux y Windows comparten la misma version funcional?
 
-No. El build y el código fuente se mantienen fuera de este repositorio público.
+Si. Este repositorio publico se organiza para que un mismo release pueda agrupar artefactos de Linux y Windows cuando ambos correspondan a la misma linea funcional.
 
-## ¿Puedo compartir binarios descargados con otros usuarios?
+## Puedo construir la app desde este repositorio?
 
-Solo si provienen de una release pública verificada y respetando la licencia y el disclaimer del proyecto.
+No. El build y el codigo fuente se mantienen fuera de este repositorio publico.
 
-## ¿Dónde se documenta el proceso de publicación?
+## Puedo compartir binarios descargados con otros usuarios?
+
+Solo si provienen de una release publica verificada y respetando la licencia y el disclaimer del proyecto.
+
+## Donde se documenta el proceso de publicacion?
 
 En [docs/PUBLISHING.md](PUBLISHING.md).
