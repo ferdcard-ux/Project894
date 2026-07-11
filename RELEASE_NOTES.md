@@ -1,6 +1,35 @@
 # Notas de la version
 
-## Version 1.3.0
+## Version 1.8.0 (Android)
+
+**Fecha:** `2026-07-10`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+`Project894` llega a Android como aplicacion nativa con Jetpack Compose, Material Design 3 y las mismas capacidades de extraccion y gestion de evidencias desde Zajuna SENA, ahora desde tu dispositivo movil.
+
+### Artefacto publicado
+- `Project894-android-1.8.0.apk`
+
+### Novedades de Android
+- **Interfaz nativa Android**: Jetpack Compose + Material Design 3.
+- **Login automatizado**: WebView con inyeccion de credenciales.
+- **Scraping integrado**: OkHttp + Jsoup (sin Playwright).
+- **Persistencia local**: Room + SQLCipher para almacenamiento cifrado.
+- **Panel de notificaciones**: Eventos de calendario y anuncios del foro.
+- **Sincronizacion en segundo plano**: WorkManager con intervalos configurables.
+- **Notificaciones push**: 4 canales nativos (Sync, Alertas, Calendario, Anuncios).
+- **Terminos y condiciones**: Pop-up obligatorio en primera ejecucion.
+- **Auto-limpieza de logs**: Conserva solo los 3 archivos mas recientes.
+- **Actualizacion in-app**: Detecta automaticamente nuevas versiones en GitHub, descarga el APK con barra de progreso e instala sin salir de la app.
+
+### Requisitos del sistema
+- Android 8.0 (API 26) o superior.
+- Conexion a internet para extraer datos de Zajuna.
+
+---
+
+## Version 1.3.0 (Escritorio)
 
 Fecha funcional de la version: `2026-04-28`
 Fecha de actualizacion publica del artefacto Windows: `2026-04-29`

@@ -11,21 +11,19 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: `v1.3.0`
-- Fecha de referencia documental: `2026-04-29`
-- Artefactos publicados en el release:
-  - `Project894-x86_64.AppImage`
-  - `Project894.exe`
-- Estado Windows del release `v1.3.0`:
-  - ejecutable `Project894.exe` reemplazado por la compilacion validada mas reciente de Windows
-  - documentacion publica sincronizada con los cambios funcionales visibles de la linea Windows `1.3.0`
+- Release activo: `v1.3.0` (escritorio) / `v1.8.0` (Android)
+- Fecha de referencia documental: `2026-07-10`
+- Artefactos publicados por plataforma:
+  - **Linux:** `Project894-x86_64.AppImage`
+  - **Windows:** `Project894.exe`
+  - **Android:** `Project894-android-1.8.0.apk`
 
 ## Que incluye la aplicacion
 
-`Project894` es una aplicacion de escritorio para automatizar la consulta y gestion local de evidencias academicas desde Zajuna.
+`Project894` esta disponible en tres plataformas:
 
-Funciones principales:
-
+### Escritorio (Linux / Windows)
+Aplicacion de escritorio en PySide6 para automatizar la consulta y gestion local de evidencias academicas desde Zajuna.
 - autenticacion con credenciales institucionales
 - extraccion de `Todas Las Evidencias`
 - consulta de `Evidencias Evaluadas`
@@ -37,16 +35,29 @@ Funciones principales:
 - mensajes operativos unificados
 - control de cambios pendientes antes de cerrar o salir
 
+### Android
+Aplicacion nativa Android con Jetpack Compose para consultar evidencias, calificaciones, anuncios y eventos de calendario desde Zajuna SENA.
+- interfaz moderna con Material Design 3
+- login automatizado mediante WebView
+- scraping integrado con OkHttp + Jsoup
+- persistencia local con Room + SQLCipher
+- panel de notificaciones con eventos de calendario y anuncios
+- sincronizacion en segundo plano con WorkManager
+- busqueda, filtros por estado y ordenamiento dinamico
+- exportacion de evidencias a Excel
+- notificaciones push con 4 canales nativos
+- cache-first para carga instantanea
+- actualizacion in-app: detecta nuevas versiones, descarga e instala desde la misma app
+
 ## Como obtener la aplicacion
 
 Las compilaciones publicas deben descargarse desde la seccion de releases del repositorio.
 
 Artefactos disponibles por plataforma:
 
-- Linux: `Project894-x86_64.AppImage`
-- Windows: `Project894.exe`
-
-El release `v1.3.0` conserva ambos artefactos, pero la presente actualizacion sincroniza especificamente la documentacion y el ejecutable de Windows.
+- **Linux:** `Project894-x86_64.AppImage`
+- **Windows:** `Project894.exe`
+- **Android:** `Project894-android-<version>.apk`
 
 ## Instalacion rapida
 
@@ -62,16 +73,23 @@ El release `v1.3.0` conserva ambos artefactos, pero la presente actualizacion si
 2. Ejecuta el archivo.
 3. Si Windows SmartScreen muestra una advertencia, valida el origen del archivo antes de continuar.
 
+### Android
+
+1. Descarga `Project894-android-<version>.apk` desde el release deseado.
+2. En tu dispositivo Android, habilita `Instalar apps desconocidas` si es necesario.
+3. Abre el archivo APK e instala.
+4. Al abrir la app por primera vez, lee y acepta los terminos y condiciones para continuar.
+
 ## Documentacion principal
 
-- [README-Win.md](README-Win.md)
-- [BUILD_WINDOWS.md](BUILD_WINDOWS.md)
-- [CHANGELOG.md](CHANGELOG.md)
-- [RELEASE_NOTES.md](RELEASE_NOTES.md)
-- [docs/USERGUIDE.md](docs/USERGUIDE.md)
-- [docs/FAQ.md](docs/FAQ.md)
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
-- [docs/PUBLISHING.md](docs/PUBLISHING.md)
+- [README-Win.md](README-Win.md) — Documentacion para Windows
+- [BUILD_WINDOWS.md](BUILD_WINDOWS.md) — Guia de compilacion Windows
+- [CHANGELOG.md](CHANGELOG.md) — Historial de versiones (todas las plataformas)
+- [RELEASE_NOTES.md](RELEASE_NOTES.md) — Notas de version
+- [docs/USERGUIDE.md](docs/USERGUIDE.md) — Guia de usuario (escritorio)
+- [docs/FAQ.md](docs/FAQ.md) — Preguntas frecuentes
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — Arquitectura del repositorio publico
+- [docs/PUBLISHING.md](docs/PUBLISHING.md) — Guia de publicacion de artefactos
 
 ## Estructura del repositorio
 
@@ -95,7 +113,7 @@ Este repositorio publico mantiene documentacion y material de publicacion:
 
 Este repositorio esta pensado para distribucion y comunicacion publica del producto terminado. El desarrollo interno, el empaquetado tecnico y la base de codigo se mantienen en repositorios locales o privados separados.
 
-La documentacion publica debe describir la experiencia del producto de forma coherente con la version publicada y con especial claridad para los usuarios de Windows, que es la variante actualizada en este ciclo.
+La documentacion publica debe describir la experiencia del producto de forma coherente con la version publicada. Las tres plataformas (Linux, Windows y Android) comparten este mismo repositorio para distribucion de artefactos.
 
 ## Importante
 

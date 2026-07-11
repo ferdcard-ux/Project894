@@ -6,6 +6,22 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [1.8.0] - 2026-07-10
+
+### Added
+- **Nueva plataforma: Android** (`Project894-android-1.8.0.apk`).
+- Pop-up de terminos y condiciones obligatorio en la primera ejecucion en Android.
+- Pantalla de notificaciones con eventos de calendario y anuncios.
+- Auto-limpieza de logs: conserva solo los 3 archivos mas recientes en `.Project894`.
+- Correccion de anuncios en Android: eliminado auth check que bloqueaba el scraping.
+- **Sistema de actualizacion in-app en Android**: la app consulta los releases de GitHub, notifica al usuario si hay una nueva version, descarga el APK con barra de progreso y abre el instalador del sistema.
+
+### Changed
+- Version de Android actualizada a `1.8.0` en toda la documentacion y codigo.
+- APK renombrado a formato `Project894-android-<version>.apk`.
+- Directorio de logs cambiado a `.Project894` (oculto).
+- Los archivos de log ahora se sobrescriben en lugar de duplicarse en MediaStore.
+
 ## [1.3.0] - 2026-04-28
 
 Actualizacion documental y de artefacto Windows sincronizada publicamente el `2026-04-29` sobre el release activo `v1.3.0`.
