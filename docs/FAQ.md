@@ -96,6 +96,8 @@ La app consulta la API de GitHub (`api.github.com/repos/ferdcard-ux/Project894/r
 
 La verificacion falla silenciosamente y no se muestra ningun dialogo. Puedes intentar de nuevo manualmente desde Ajustes > Buscar actualizaciones.
 
+> Para preguntas especificas de Android, consulta [FAQ-Android.md](FAQ-Android.md).
+
 ## Linux y Windows comparten la misma version funcional?
 
 Si. Este repositorio publico se organiza para que un mismo release pueda agrupar artefactos de Linux y Windows cuando ambos correspondan a la misma linea funcional.

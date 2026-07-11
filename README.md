@@ -86,8 +86,10 @@ Artefactos disponibles por plataforma:
 - [BUILD_WINDOWS.md](BUILD_WINDOWS.md) — Guia de compilacion Windows
 - [CHANGELOG.md](CHANGELOG.md) — Historial de versiones (todas las plataformas)
 - [RELEASE_NOTES.md](RELEASE_NOTES.md) — Notas de version
-- [docs/USERGUIDE.md](docs/USERGUIDE.md) — Guia de usuario (escritorio)
+- [docs/USERGUIDE.md](docs/USERGUIDE.md) — Guia de usuario escritorio (Linux/Windows)
+- [docs/USERGUIDE-Android.md](docs/USERGUIDE-Android.md) — Guia de usuario Android
 - [docs/FAQ.md](docs/FAQ.md) — Preguntas frecuentes
+- [docs/FAQ-Android.md](docs/FAQ-Android.md) — Preguntas frecuentes Android
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — Arquitectura del repositorio publico
 - [docs/PUBLISHING.md](docs/PUBLISHING.md) — Guia de publicacion de artefactos
 
@@ -106,6 +108,8 @@ Este repositorio publico mantiene documentacion y material de publicacion:
 |-- README-Win.md
 |-- RELEASE_NOTES.md
 |-- SECURITY.md
+|   |-- FAQ-Android.md
+|   |-- USERGUIDE-Android.md
 `-- docs/
 ```
 
