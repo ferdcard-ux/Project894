@@ -87,6 +87,13 @@ Cada evidencia se muestra como una tarjeta con:
 ### Sincronizar datos
 Presiona el botón flotante (FAB) con ícono de actualizar para forzar una sincronización manual. Verás un indicador de progreso mientras se actualizan los datos.
 
+### Indicador de sincronización
+Debajo de los filtros, una barra visual muestra el estado de la última sincronización:
+- **Check verde + "Última sync: hace X min (N evidencias)"**: Sincronización exitosa reciente.
+- **Check rojo + "Sync fallida"**: La última sincronización encontró un error.
+- **Spinner + "Sincronizando..."**: Sincronización en progreso.
+- **Oculto**: La app nunca se ha sincronizado en esta sesión.
+
 ---
 
 ## 5. Pantalla de Notificaciones

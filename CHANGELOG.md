@@ -6,6 +6,23 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [1.9.0] - 2026-07-18
+
+### Added
+- **Indicador de estado de sincronizacion** en la pantalla de evidencias: barra visual que muestra fecha/hora de la ultima sincronizacion, cantidad de evidencias y estado de exito/error.
+- Campo `LAST_SYNC_TIME` y `LAST_SYNC_SUCCESS` en preferencias de usuario para persistir el estado de sincronizacion entre sesiones.
+
+### Fixed
+- **Correccion critica de login**: el sitio Zajuna fue reestructurado durante mantenimiento y la pagina de login se movio de `/zajuna/login/index.php` a la raiz `https://zajuna.sena.edu.co/`. Se reescribio el flujo de login en `WebViewLoginHelper` para detectar y rellenar el formulario de login en cualquier pagina, eliminando el bucle infinito de fallbacks SSL que causaba timeout.
+- `LOGIN_URL` actualizado para apuntar a la raiz del sitio (nuevo CMS).
+- `isAuthenticatedUrl` ampliado para reconocer cualquier ruta `/zajuna/` post-login.
+- Eliminado codigo muerto: `scheduleSslFallback`, `sslErrorHandled`, `fallbackAttempts`.
+
+### Changed
+- Version de Android actualizada a `1.9.0` (versionCode 3).
+- Delay de 1.5s antes de inyectar credenciales para permitir que el contenido JavaScript se renderice completamente.
+- `injectCredentials` siempre intenta `buildLoginJs` primero, con fallback a `buildDirectPostJs` hacia `controllers/login_user/singIn.php`.
+
 ## [1.8.0] - 2026-07-10
 
 ### Added

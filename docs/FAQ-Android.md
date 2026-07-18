@@ -45,6 +45,8 @@ Además, puedes buscar por título o código usando la barra de búsqueda.
 
 La app usa un modelo **cache-first**: al abrir una pantalla, los datos se cargan instantáneamente desde la base de datos local (Room), y luego se sincronizan en segundo plano con Zajuna. También puedes forzar la sincronización manual con el botón de actualización.
 
+Un **indicador visual** debajo de los filtros en la pantalla de Evidencias muestra el estado de la última sincronización (fecha, cantidad de evidencias y si fue exitosa).
+
 La sincronización automática se programa después del login exitoso y puede configurarse en Ajustes (intervalo de 1 a 6 horas).
 
 ## ¿Qué notificaciones recibo?

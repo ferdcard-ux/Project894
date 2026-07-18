@@ -1,27 +1,37 @@
 # Notas de la version
 
-## Version 1.8.0 (Android)
+## Version 1.9.0 (Android)
 
-**Fecha:** `2026-07-10`
+**Fecha:** `2026-07-18`
 **Plataforma:** Android (API 26+)
 
 ### Resumen
-`Project894` llega a Android como aplicacion nativa con Jetpack Compose, Material Design 3 y las mismas capacidades de extraccion y gestion de evidencias desde Zajuna SENA, ahora desde tu dispositivo movil.
+Correccion critica del login para adaptarse a la reestructuracion del sitio Zajuna, que migro de Moodle a un CMS personalizado. Se agrega indicador visual de estado de sincronizacion en la pantalla de evidencias.
 
 ### Artefacto publicado
-- `Project894-android-1.8.0.apk`
+- `Project894-android-1.9.0.apk`
 
-### Novedades de Android
-- **Interfaz nativa Android**: Jetpack Compose + Material Design 3.
-- **Login automatizado**: WebView con inyeccion de credenciales.
-- **Scraping integrado**: OkHttp + Jsoup (sin Playwright).
-- **Persistencia local**: Room + SQLCipher para almacenamiento cifrado.
-- **Panel de notificaciones**: Eventos de calendario y anuncios del foro.
-- **Sincronizacion en segundo plano**: WorkManager con intervalos configurables.
-- **Notificaciones push**: 4 canales nativos (Sync, Alertas, Calendario, Anuncios).
-- **Terminos y condiciones**: Pop-up obligatorio en primera ejecucion.
-- **Auto-limpieza de logs**: Conserva solo los 3 archivos mas recientes.
-- **Actualizacion in-app**: Detecta automaticamente nuevas versiones en GitHub, descarga el APK con barra de progreso e instala sin salir de la app.
+### Cambios en esta version
+- **Login corregido**: el sitio Zajuna cambio la ubicacion de la pagina de login durante mantenimiento. La app ahora detecta y utiliza el nuevo formulario de login en la raiz del sitio.
+- **Indicador de sincronizacion**: nueva barra visual en la pantalla de evidencias que muestra cuando fue la ultima sincronizacion y si fue exitosa.
+- **Rendimiento**: delay optimizado de 1.5s antes de inyectar credenciales para asegurar que el DOM este completamente renderizado.
+- **Limpieza de codigo**: eliminados mecanismos de fallback SSL que ya no son necesarios.
+
+### Notas de la version anterior (1.8.0)
+
+**Fecha:** `2026-07-10`
+
+#### Novedades de Android
+- Interfaz nativa Android con Jetpack Compose y Material Design 3
+- Login automatizado mediante WebView con inyeccion de credenciales
+- Scraping integrado con OkHttp + Jsoup (sin Playwright)
+- Persistencia local con Room + SQLCipher para almacenamiento cifrado
+- Panel de notificaciones con eventos de calendario y anuncios del foro
+- Sincronizacion en segundo plano con WorkManager
+- Notificaciones push con 4 canales nativos (Sync, Alertas, Calendario, Anuncios)
+- Terminos y condiciones: pop-up obligatorio en primera ejecucion
+- Auto-limpieza de logs: conserva solo los 3 archivos mas recientes
+- Actualizacion in-app: detecta nuevas versiones en GitHub, descarga e instala desde la misma app
 
 ### Requisitos del sistema
 - Android 8.0 (API 26) o superior.
