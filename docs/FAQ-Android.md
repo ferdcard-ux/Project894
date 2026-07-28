@@ -69,9 +69,11 @@ Puedes habilitar/deshabilitar cada tipo individualmente desde Ajustes > Notifica
 
 ## ¿Cómo funciona la actualización in-app?
 
-Al abrir Ajustes, la app consulta automáticamente los releases del repositorio oficial de GitHub. Si existe una versión más reciente de `Project894-android-*.apk`, muestra un diálogo con la nueva versión y las notas del release. Puedes descargar la actualización con barra de progreso e instalarla directamente desde la app.
+La app verifica nuevas versiones de dos formas:
 
-También puedes forzar la verificación manual desde Ajustes > Buscar actualizaciones.
+**Automática (segundo plano):** Cada 12 horas, la app consulta GitHub automáticamente. Si hay una nueva versión, aparece una notificación en la bandeja del sistema. Al abrir la app, el diálogo de actualización se muestra automáticamente desde cualquier pantalla.
+
+**Manual:** Abre Ajustes y presiona "Buscar actualizaciones". La app consulta los releases del repositorio oficial de GitHub. Si existe una versión más reciente de `Project894-android-*.apk`, muestra un diálogo con la nueva versión y las notas del release. Puedes descargar la actualización con barra de progreso e instalarla directamente desde la app.
 
 ## ¿Dónde se guardan los datos localmente?
 

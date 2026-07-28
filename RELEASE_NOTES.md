@@ -1,5 +1,24 @@
 # Notas de la version
 
+## Version 1.10.0 (Android)
+
+**Fecha:** `2026-07-28`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Sistema de actualizacion automatica en segundo plano. La app ahora verifica nuevas versiones cada 12 horas sin necesidad de abrir la pantalla de configuracion, y notifica al usuario mediante la bandeja del sistema.
+
+### Artefacto publicado
+- `Project894-android-1.10.0.apk`
+
+### Cambios en esta version
+- **Actualizacion automatica**: `UpdateWorker` (WorkManager) se ejecuta cada 12 horas, consulta GitHub y persiste el resultado.
+- **Notificacion nativa**: Cuando hay una nueva version, aparece una notificacion en la bandeja del sistema.
+- **Dialogo global**: Al abrir la app, si hay una actualizacion pendiente, el dialogo se muestra automaticamente desde cualquier pantalla.
+- **Persistencia**: El resultado de la ultima verificacion se almacena en preferencias de usuario para mostrarlo al reabrir la app.
+
+### Notas de la version anterior (1.9.0)
+
 ## Version 1.9.0 (Android)
 
 **Fecha:** `2026-07-18`

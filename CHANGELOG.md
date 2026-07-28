@@ -6,6 +6,17 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [1.10.0] - 2026-07-28
+
+### Added
+- **Actualización automática en segundo plano**: `UpdateWorker` (WorkManager) verifica nuevas versiones en GitHub cada 12 horas y publica una notificación en la bandeja del sistema cuando hay una actualización disponible.
+- **Diálogo de actualización global**: Al abrir la app, si hay una actualización pendiente descubierta en segundo plano, el diálogo se muestra automáticamente desde cualquier pantalla.
+- **Nuevo canal de notificación**: `CHANNEL_UPDATES` para notificaciones de actualizaciones disponibles.
+
+### Changed
+- La verificación manual desde Configuración ahora también persiste el resultado para que el diálogo global lo muestre al reabrir la app.
+- `Project894App.onCreate()` programa `UpdateWorker` al iniciar la app.
+
 ## [1.9.0] - 2026-07-18
 
 ### Added

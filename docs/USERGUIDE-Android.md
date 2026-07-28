@@ -145,7 +145,8 @@ Los subtipos solo se muestran si el interruptor global está activado.
 
 ### 6.5 Actualizaciones
 
-- **Buscar actualizaciones**: Verifica si hay una versión más reciente disponible en GitHub. Si existe, puedes descargarla e instalarla directamente desde la app.
+- **Buscar actualizaciones**: Verifica manualmente si hay una versión más reciente disponible en GitHub. Si existe, puedes descargarla e instalarla directamente desde la app.
+- **Verificación automática**: La app verifica nuevas versiones en segundo plano cada 12 horas. Si hay una actualización, recibirás una notificación en la bandeja del sistema. Al abrir la app, el diálogo de actualización se muestra automáticamente desde cualquier pantalla.
 
 ### 6.6 Acerca de
 
@@ -159,18 +160,25 @@ Limpia los datos de la sesión actual y regresa a la pantalla de login.
 
 ## 7. Actualización In-App
 
-1. Abre la pantalla de **Configuración**. La app verifica automáticamente si hay una nueva versión.
+La app verifica nuevas versiones de dos formas:
 
-2. Si hay una actualización disponible, aparece un diálogo con:
+### Automática (segundo plano)
+- Cada 12 horas, la app consulta GitHub en segundo plano.
+- Si hay una nueva versión, aparece una notificación en la bandeja del sistema.
+- Al abrir la app, el diálogo de actualización se muestra automáticamente desde cualquier pantalla.
+
+### Manual
+1. Abre la pantalla de **Configuración**.
+2. Presiona **"Buscar actualizaciones"**.
+3. Si hay una actualización disponible, aparece un diálogo con:
    - Versión nueva y fecha de publicación
    - Notas del release
    - Botón **"Descargar"** y **"Más tarde"**
 
-3. Presiona **"Descargar"** para iniciar la descarga. Verás una barra de progreso con el porcentaje.
-
-4. Al completar la descarga, presiona **"Instalar ahora"** para abrir el instalador del sistema.
-
-5. Confirma la instalación en la pantalla del sistema Android.
+### Descarga e instalación
+1. Presiona **"Descargar"** para iniciar la descarga. Verás una barra de progreso con el porcentaje.
+2. Al completar la descarga, presiona **"Instalar ahora"** para abrir el instalador del sistema.
+3. Confirma la instalación en la pantalla del sistema Android.
 
 > **Nota:** Si no hay internet al verificar, la app no muestra ningún mensaje. Puedes forzar la verificación manual desde Ajustes > Buscar actualizaciones.
 
@@ -211,6 +219,7 @@ Limpia los datos de la sesión actual y regresa a la pantalla de login.
 - Verifica tu conexión a internet.
 - La app busca releases con el formato `Project894-android-*.apk` en el repositorio oficial.
 - Puedes forzar la verificación desde Ajustes > Buscar actualizaciones.
+- La verificación automática en segundo plano puede tardar hasta 12 horas en ejecutarse. Si acabas de instalar la app, espera o usa la verificación manual.
 
 ---
 

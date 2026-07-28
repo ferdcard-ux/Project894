@@ -11,12 +11,12 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: `v1.3.0` (escritorio) / `v1.9.0` (Android)
-- Fecha de referencia documental: `2026-07-18`
+- Release activo: `v1.3.0` (escritorio) / `v1.10.0` (Android)
+- Fecha de referencia documental: `2026-07-28`
 - Artefactos publicados por plataforma:
   - **Linux:** `Project894-x86_64.AppImage`
   - **Windows:** `Project894.exe`
-  - **Android:** `Project894-android-1.9.0.apk`
+  - **Android:** `Project894-android-1.10.0.apk`
 
 ## Que incluye la aplicacion
 
@@ -48,7 +48,7 @@ Aplicacion nativa Android con Jetpack Compose para consultar evidencias, calific
 - notificaciones push con 4 canales nativos
 - cache-first para carga instantanea
 - indicador de estado de sincronizacion en la pantalla de evidencias
-- actualizacion in-app: detecta nuevas versiones, descarga e instala desde la misma app
+- actualizacion in-app: deteccion automatica en segundo plano cada 12h + verificacion manual, descarga e instalacion desde la misma app
 
 ## Como obtener la aplicacion
 
