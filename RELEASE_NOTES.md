@@ -1,5 +1,41 @@
 # Notas de la version
 
+## Version 2.0.0 (Android)
+
+**Fecha:** `2026-07-31`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Version mayor con una auditoria completa de seguridad (11 riesgos corregidos) y mejoras de funcionalidad, rendimiento, experiencia de usuario y calidad. Se introduce el selector de curso activo, alertas de evidencias proximas a vencer y sesion persistente.
+
+### Artefacto publicado
+- `Project894-android-2.0.0.apk`
+
+### Seguridad
+- **TLS real**: la app ya no acepta cualquier certificado; en produccion valida contra los certificados del sistema.
+- **SSL estricto en el login**: errores SSL graves cancelan el acceso (solo se toleran errores menores).
+- **Base de datos cifrada con clave del dispositivo**: la passphrase se deriva de AndroidKeyStore, no esta incrustada en el APK.
+- **APK verificado por SHA-256** antes de instalar actualizaciones.
+- **Logout completo** (credenciales + cookies + datos locales opcional) y **logs sin PII** (documentos enmascarados).
+- **Anuncios sanitizados** y navegacion restringida a sitios SENA.
+- Componentes de cifrado actualizados a version estable.
+
+### Funcionalidad
+- **Selector de curso activo** en Configuracion (evidencias, anuncios y calendario del curso elegido).
+- **Alertas de evidencias a vencer** en 0-3 dias.
+- **Sesion persistente**: cookies cifradas, sin re-login en cada reinicio.
+- **Colores dinamicos (Material You)** y tema oscuro completo.
+- Solicitud de permiso de notificaciones con contexto.
+
+### Rendimiento y calidad
+- Sincronizacion en segundo plano sin bloqueos (goAsync) y con tope de reintentos.
+- Exportacion Excel en segundo plano y mas rapida.
+- Intervalo de sincronizacion configurable respetado.
+- Suite de tests unitarios y limpieza de codigo muerto.
+- Firma consistente con las versiones anteriores.
+
+### Notas de la version anterior (1.10.0)
+
 ## Version 1.10.0 (Android)
 
 **Fecha:** `2026-07-28`

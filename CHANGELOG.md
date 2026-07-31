@@ -6,6 +6,35 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-07-31
+
+### Added
+- **Selector de curso activo** en Configuracion: se sincronizan evidencias, anuncios y calendario del curso elegido (antes estaba fijado un solo curso).
+- **Alertas de evidencias proximas a vencer**: notificacion cuando hay actividades pendientes que vencen en 0-3 dias.
+- **Sesion persistente**: las cookies se guardan cifradas, evitando volver a iniciar sesion en cada reinicio de la app.
+- **Colores dinamicos (Material You)** en Android 12+ y tema oscuro completo.
+- **Solicitud de permiso de notificaciones con contexto** y re-intento desde Configuracion.
+
+### Security
+- Conexion TLS real en las compilaciones de produccion (el modo que confia en cualquier certificado quedo limitado a debug).
+- Errores SSL graves ya no permiten continuar el login (solo errores menores como fecha del certificado).
+- Clave de cifrado de la base de datos derivada del almacen seguro del dispositivo (AndroidKeyStore).
+- Verificacion SHA-256 del APK descargado antes de instalarlo (proteccion contra suministro corrupto).
+- Logout completo: elimina credenciales, cookies y (opcional) datos locales.
+- Logs sin numeros de documento (enmascarados) y sin copia automatica a Descargas.
+- Contenido de anuncios sanitizado antes de mostrarse; navegacion restringida a sitios de SENA.
+- Componentes de cifrado actualizados a la version estable.
+
+### Changed
+- La sincronizacion se reprograma con el intervalo configurado por el usuario (1-6 horas).
+- Auto-login fallido redirige a la pantalla de inicio de sesion con aviso.
+- Si el re-login en segundo plano falla, se notifica al usuario.
+- Arranque en segundo plano sin bloqueos (evita cuelgues del sistema).
+- Exportacion a Excel mas rapida, sin bloquear la interfaz.
+- La verificacion de actualizaciones automatica esta limitada (1 vez cada 6 horas).
+- Textos de la interfaz centralizados para soportar idiomas.
+- Version actualizada a `2.0.0` (versionCode 10).
+
 ## [1.10.0] - 2026-07-28
 
 ### Added
