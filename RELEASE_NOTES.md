@@ -1,27 +1,46 @@
 # Notas de la version
 
+## Version 2.0.2 (Android)
+
+**Fecha:** `2026-07-31`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Correccion definitiva del cierre al abrir la aplicacion. Las versiones 2.0.0 y 2.0.1 derivaban
+la clave de cifrado de la base de datos desde el almacen seguro del dispositivo; en telefonos
+cuyo hardware no permite exportar la clave (TEE/StrongBox), eso devolvia `null` y la aplicacion
+fallaba al arrancar (Redmi Note 12, Moto G22). La 2.0.2 genera una clave aleatoria propia y la
+protege con el almacen seguro, lo que funciona en todos los dispositivos.
+
+### Artefacto publicado
+- `Project894-android-2.0.2.apk`
+
+### Correcciones
+- **Clave de la base de datos**: se elimina la dependencia del byte[] exportable del almacen
+  seguro. La clave es aleatoria y se guarda cifrada con el MasterKey del dispositivo
+  (`EncryptedSharedPreferences`), el mismo mecanismo ya usado para las cookies de sesion.
+- **Actualizable desde 2.0.1**: la version sube a `versionCode 12` para que el instalador permita
+  reemplazar la instalacion rota.
+
+### Notas de la version anterior (2.0.1)
+
 ## Version 2.0.1 (Android)
 
 **Fecha:** `2026-07-31`
 **Plataforma:** Android (API 26+)
 
 ### Resumen
-Hotfix de estabilidad para la version 2.0.0. La compilacion de produccion 2.0.0 se distribuyo
-minificada (R8) y eso rompio el marco de inyeccion de dependencias (Hilt), provocando un cierre
-de la aplicacion inmediatamente al abrirla. La 2.0.1 se compila con la misma configuracion del
-1.10.0 (sin minificar), que fue la ultima version distribuida y funcionaba correctamente.
-
-### Artefacto publicado
-- `Project894-android-2.0.1.apk`
+Hotfix intermedio para el cierre al abrir la aplicacion. Se desactivo la minificacion (R8) y se
+agrego proteccion ante fallos de apertura de la base de datos, pero la causa raiz (clave del
+almacen seguro no exportable) persistia; se corrige por completo en la 2.0.2. Esta release ya no
+esta disponible para descarga.
 
 ### Correcciones
 - **Crash al abrir la aplicacion**: se desactiva la minificacion R8 en las compilaciones de
-  produccion (causa raiz del fallo en Redmi Note 12 y Moto G22).
-- **Migracion de la base de datos cifrada**: al cambiar la clave de cifrado de la BD (mejora de
-  seguridad de la 2.0.0), las instalaciones previas no podian abrir su base de datos. Ahora, si la
-  apertura falla, la BD se descarta y se vuelve a sincronizar desde Zajuna automaticamente.
-- **Actualizable desde 2.0.0**: la version sube a `versionCode 11` para que el instalador permita
-  reemplazar la instalacion rota.
+  produccion.
+- **Migracion de la base de datos cifrada**: si la apertura falla, la BD se descarta y se vuelve
+  a sincronizar desde Zajuna automaticamente.
+- **Actualizable desde 2.0.0**: version `versionCode 11`.
 
 ### Notas de la version anterior (2.0.0)
 
