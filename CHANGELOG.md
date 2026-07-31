@@ -6,6 +6,20 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.3] - 2026-07-31
+
+### Fixed
+- **Login SENA por TLS**: en algunos dispositivos (Moto G22 / Android 12) el almacen seguro del
+  sistema no incluye la raiz Sectigo con la que firma el certificado de zajuna.sena.edu.co, y el
+  WebView de login fallaba con error de certificado (net_error -202) aunque el navegador si permitia
+  entrar. La 2.0.3 incluye la raiz Sectigo Public Server Authentication Root R46 como ancla de
+  confianza adicional, solo para el dominio de SENA (sin abrir el resto de conexiones).
+- **Dialogo de actualizacion obsoleto**: si quedaba una actualizacion pendiente de una version ya
+  retirada, la app ya no la ofrece; la descarta automaticamente.
+
+### Changed
+- Version actualizada a `2.0.3` (versionCode 13).
+
 ## [2.0.2] - 2026-07-31
 
 ### Fixed

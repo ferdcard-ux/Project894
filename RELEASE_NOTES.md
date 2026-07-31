@@ -1,5 +1,31 @@
 # Notas de la version
 
+## Version 2.0.3 (Android)
+
+**Fecha:** `2026-07-31`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Correcciones de compatibilidad y robustez tras validar la 2.0.2 en hardware real (Moto G22).
+El login a SENA podia fallar con error de certificado en telefonos cuyo sistema no incluye la raiz
+Sectigo con la que firma zajuna.sena.edu.co; la 2.0.3 empaqueta esa raiz como ancla de confianza
+adicional (solo para el dominio de SENA). Ademas, la app ya no ofrece actualizaciones de versiones
+que fueron retiradas de la publicacion.
+
+### Artefacto publicado
+- `Project894-android-2.0.3.apk`
+
+### Correcciones
+- **Login SENA por TLS**: se incluye la raiz `Sectigo Public Server Authentication Root R46` como
+  ancla de confianza del WebView y de las conexiones HTTPS de la app, unicamente para
+  `zajuna.sena.edu.co`. Corrige el error `net_error -202` (autoridad de certificado no valida) en
+  dispositivos sin raices Sectigo en el sistema, sin ampliar la confianza del resto de conexiones.
+- **Dialogo de actualizacion obsoleto**: una actualizacion pendiente persistida de una version ya
+  eliminada ya no se ofrece; se descarta al arrancar si la version pendiente no supera a la
+  instalada.
+
+### Notas de la version anterior (2.0.2)
+
 ## Version 2.0.2 (Android)
 
 **Fecha:** `2026-07-31`
