@@ -6,6 +6,19 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-07-31
+
+### Fixed
+- **Crash al abrir la aplicacion**: la compilacion 2.0.0 se distribuyo con minificacion (R8), lo
+  cual rompio la inyeccion de dependencias de Hilt y cerraba la app al arrancar. Se restaura la
+  compilacion sin minificar (configuracion probada del 1.10.0).
+- **Migracion de base de datos cifrada**: las instalaciones previas tienen la BD cifrada con la
+  clave anterior; si no se puede abrir con la clave nueva, la BD se descarta y se vuelve a
+  sincronizar desde Zajuna.
+
+### Changed
+- Version actualizada a `2.0.1` (versionCode 11) para permitir actualizar sobre la 2.0.0.
+
 ## [2.0.0] - 2026-07-31
 
 ### Added

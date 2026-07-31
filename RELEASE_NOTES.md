@@ -1,5 +1,30 @@
 # Notas de la version
 
+## Version 2.0.1 (Android)
+
+**Fecha:** `2026-07-31`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Hotfix de estabilidad para la version 2.0.0. La compilacion de produccion 2.0.0 se distribuyo
+minificada (R8) y eso rompio el marco de inyeccion de dependencias (Hilt), provocando un cierre
+de la aplicacion inmediatamente al abrirla. La 2.0.1 se compila con la misma configuracion del
+1.10.0 (sin minificar), que fue la ultima version distribuida y funcionaba correctamente.
+
+### Artefacto publicado
+- `Project894-android-2.0.1.apk`
+
+### Correcciones
+- **Crash al abrir la aplicacion**: se desactiva la minificacion R8 en las compilaciones de
+  produccion (causa raiz del fallo en Redmi Note 12 y Moto G22).
+- **Migracion de la base de datos cifrada**: al cambiar la clave de cifrado de la BD (mejora de
+  seguridad de la 2.0.0), las instalaciones previas no podian abrir su base de datos. Ahora, si la
+  apertura falla, la BD se descarta y se vuelve a sincronizar desde Zajuna automaticamente.
+- **Actualizable desde 2.0.0**: la version sube a `versionCode 11` para que el instalador permita
+  reemplazar la instalacion rota.
+
+### Notas de la version anterior (2.0.0)
+
 ## Version 2.0.0 (Android)
 
 **Fecha:** `2026-07-31`
