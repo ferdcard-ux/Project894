@@ -47,7 +47,9 @@ El archivo principal es `auth_debug.log`.
 - La aplicacion muestra esa ruta exacta cuando ocurre un error de autenticacion o scraping
 
 ### Android
-Los logs de la aplicacion Android se almacenan en `Descargas/.Project894/`. Puedes copiarlos desde la pantalla de Ajustes > "Copiar registro de la aplicacion". La app te mostrara la ruta del archivo copiado.
+Los logs de la aplicacion Android se guardan en un directorio privado de la app
+(`Android/data/<paquete>/.logs/`). Desde Ajustes > "Exportar logs" puedes compartirlos mediante el
+selector de aplicaciones del sistema (share sheet).
 
 ## Que tecnologias usa?
 
@@ -64,7 +66,7 @@ Los logs de la aplicacion Android se almacenan en `Descargas/.Project894/`. Pued
 - `OkHttp` + `Jsoup` (scraping)
 - `Room` + `SQLCipher` (base de datos local)
 - `WorkManager` (sincronizacion en segundo plano)
-- `Koin` (inyeccion de dependencias)
+- `Hilt` (inyeccion de dependencias)
 - `Navigation Compose` (navegacion)
 - `DataStore` (preferencias de usuario)
 
@@ -86,7 +88,9 @@ Aparece un pop-up de terminos y condiciones que debes leer completamente y acept
 
 ## Donde se guardan los logs en Android?
 
-Los logs se guardan en la carpeta `Descargas/.Project894/`. La app conserva automaticamente solo los 3 archivos de log mas recientes.
+Los logs se guardan en un directorio privado de la app (`Android/data/<paquete>/.logs/`). Para
+compartirlos, abre Ajustes > "Exportar logs" y elige la aplicacion de destino en el share sheet del
+sistema. La app conserva automaticamente solo los 3 archivos de log mas recientes.
 
 ## Como funciona la actualización in-app en Android?
 

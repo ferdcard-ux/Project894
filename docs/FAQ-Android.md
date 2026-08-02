@@ -14,6 +14,7 @@ Sí, para autenticarse y extraer datos de Zajuna. Algunas secciones funcionan of
 2. Ingresa tu número de documento y contraseña.
 3. Presiona "Ingresar". La app abre un WebView invisible, inyecta las credenciales y navega automáticamente.
 4. Al cerrar la app, las credenciales se almacenan cifradas localmente para auto-login en la siguiente apertura.
+5. En aperturas posteriores, si la sesión persistida sigue activa, la app entra directo sin repetir el WebView.
 
 ## ¿Qué pasa al abrir la app por primera vez?
 
@@ -21,14 +22,16 @@ Aparece un pop-up de **Términos y Condiciones** que debes leer completamente. L
 
 ## ¿Cómo se organizan las pantallas?
 
-La app tiene 4 pantallas principales, accesibles desde la barra inferior:
+La app tiene 3 pantallas principales: **Evidencias** (inicio), accesible desde la barra superior con
+iconos de **Notificaciones** y **Configuración**; **Notificaciones** muestra eventos de calendario y
+anuncios; **Configuración** contiene los ajustes. Desde Notificaciones se accede al **Detalle de
+Anuncio**.
 
 | Pantalla | Descripción |
 |---|---|
 | **Evidencias** | Lista de evidencias con búsqueda, filtros por estado y ordenamiento. |
 | **Notificaciones** | Eventos de calendario próximos y anuncios del foro. |
 | **Configuración** | Ajustes de notificaciones, sincronización, exportación y actualización. |
-| **Perfil** | Información de la sesión y cierre de sesión. |
 
 ## ¿Qué filtros y ordenamientos tiene la pantalla de Evidencias?
 
@@ -56,16 +59,18 @@ La app tiene 4 canales de notificación:
 | Canal | Disparador |
 |---|---|
 | Sincronización | Progreso de la sincronización en segundo plano |
-| Alertas | Evidencias próximas a vencer (≤7 días) |
+| Alertas | Evidencias próximas a vencer (≤7 días) y **eventos que vencen hoy** |
 | Calendario | Eventos de calendario próximos |
 | Anuncios | Nuevos anuncios del curso |
 
-Puedes habilitar/deshabilitar cada tipo individualmente desde Ajustes > Notificaciones.
+Puedes habilitar/deshabilitar cada tipo individualmente desde Ajustes > Notificaciones. Además,
+cuando un evento de calendario vence el día actual, la app muestra una notificación fija
+"Evento vence hoy" que se retira automáticamente cuando ya no aplica.
 
 ## ¿Cómo exporto mis datos?
 
 - **Evidencias a Excel**: Desde Ajustes > Exportar a Excel. Se crea un archivo `.xlsx` con todas las evidencias.
-- **Logs de depuración**: Desde Ajustes > Exportar logs. Copia el registro de la aplicación a la carpeta `Descargas/.Project894/`.
+- **Logs de depuración**: Desde Ajustes > Exportar logs. Abre el share sheet del sistema para compartir/guardar el archivo de log del día.
 
 ## ¿Cómo funciona la actualización in-app?
 
@@ -82,7 +87,7 @@ La app verifica nuevas versiones de dos formas:
 | Base de datos (Room + SQLCipher) | Almacenamiento interno privado de la app |
 | Credenciales | EncryptedSharedPreferences (Android KeyStore) |
 | Preferencias de usuario | DataStore (archivo interno) |
-| Logs de depuración | `Descargas/.Project894/` |
+| Logs de depuración | Directorio privado de la app (`Android/data/<pkg>/.logs/`); exportación manual vía share sheet |
 | APK de actualización | Caché interna de la app (`cache/updates/`) |
 
 ## ¿Qué permisos necesita la app?

@@ -20,6 +20,7 @@ El repositorio se organiza en estas piezas:
 Repositorios privados / locales
   |-- build Linux
   |-- build Windows
+  |-- build Android (APK firmado, release)
   `-- validacion interna
            |
            v
@@ -31,7 +32,8 @@ Project894 Public
   |-- release notes
   `-- releases binarios
         |-- Project894-x86_64.AppImage
-        `-- Project894.exe
+        |-- Project894.exe
+        `-- Project894-android-<version>.apk
 ```
 
 ## Separacion de responsabilidades
@@ -50,6 +52,14 @@ Project894 Public
 - documentacion de instalacion y uso
 - referencias publicas de soporte, licencia y disclaimer
 - conservacion del historial de releases
+
+## Flujo del artefacto Android
+
+1. El APK se compila y firma en el entorno interno de Android (release, `Project894-android-<version>.apk`).
+2. Se valida en hardware real (instalacion y pruebas en dispositivos) antes de publicar.
+3. Se actualiza la documentacion publica: `README.md`, `CHANGELOG.md`, `RELEASE_NOTES.md`,
+   `docs/USERGUIDE-Android.md` y `docs/FAQ-Android.md`.
+4. Se sube el APK como asset del release en GitHub correspondiente a la nueva version.
 
 ## Flujo del artefacto Windows
 

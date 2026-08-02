@@ -6,6 +6,51 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.5] - 2026-08-01
+
+### Added
+- **Acciones por pulsacion larga en anuncios**: al mantener presionada una tarjeta de anuncio (en el
+  panel de Notificaciones) o el contenido del anuncio en su detalle (incluidos los enlaces del
+  cuerpo), se abre un dialogo con "Seleccionar texto" (copia al portapapeles), "Compartir anuncio",
+  "Abrir en navegador" y "Cancelar".
+- **Eventos de calendario con tarjeta clickeable**: se elimino el boton OpenInBrowser; toda la tarjeta
+  del evento abre su enlace al tocarla. La pulsacion larga abre el dialogo de acciones.
+- **Notificacion persistente "Evento vence hoy"**: cuando un evento de calendario vence el dia actual,
+  la app muestra una notificacion fija (no descartable) con el titulo y la fecha del evento. Se retira
+  automaticamente cuando ya no hay eventos que venzan hoy.
+- **Instructor en anuncios y eventos**: los anuncios muestran titulo, fecha e instructor en lineas
+  separadas, y sin duplicados.
+
+### Fixed
+- **Tarjetas invisibles en tema oscuro**: en dark mode las tarjetas usaban el mismo tono que el fondo
+  del panel. Ahora tienen un contenedor mas claro y un borde visible que las delimita.
+- **Instructor duplicando la fecha en anuncios**: los selectores del foro de Zajuna capturaban la
+  celda completa ("NOMBRE DD MMM AAAA"); se ajustaron para separar correctamente fecha e instructor.
+- **Error de base de datos al actualizar**: la nueva version anade columnas a las tablas de anuncios y
+  eventos; se registra una migracion declarativa (Room 2 → 3) que conserva los datos existentes.
+
+### Changed
+- Version actualizada a `2.0.5` (versionCode 15).
+
+## [2.0.4] - 2026-07-31
+
+### Fixed
+- **Error HTTP 400 al sincronizar**: el almacen de cookies acumulaba miles de cookies duplicadas, lo
+  que inflaba el encabezado `Cookie` de cada peticion y hacia que el cortafuegos del sitio rechazara
+  las conexiones. Ahora las cookies se deduplican y se limitan por peticion.
+- **Sesion valida marcada como expirada**: se distingue ahora entre un bloqueo temporal del
+  cortafuegos del sitio y una sesion realmente caducada, evitando ciclos de re-inicio de sesion.
+- **Auto-login repetido al abrir la app**: el inicio de sesion automatico ya no se relanza en cada
+  actualizacion de pantalla; ademas, si la sesion guardada sigue activa, entra directo sin repetir el
+  navegador web.
+- **Contenido de anuncios con restos de la pagina**: el detalle del anuncio se recorta con mayor
+  precision para mostrar solo el mensaje real del foro.
+
+### Changed
+- Exportacion de registros (logs): ahora se comparte mediante el selector de aplicaciones del sistema
+  en lugar de copiarse automaticamente a la carpeta Descargas.
+- Version actualizada a `2.0.4` (versionCode 14).
+
 ## [2.0.3] - 2026-07-31
 
 ### Fixed

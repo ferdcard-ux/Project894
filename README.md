@@ -11,12 +11,12 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: `v1.3.0` (escritorio) / `v2.0.3` (Android)
-- Fecha de referencia documental: `2026-07-31`
+- Release activo: `v1.3.0` (escritorio) / `v2.0.5` (Android)
+- Fecha de referencia documental: `2026-08-01`
 - Artefactos publicados por plataforma:
   - **Linux:** `Project894-x86_64.AppImage`
   - **Windows:** `Project894.exe`
-  - **Android:** `Project894-android-2.0.3.apk`
+  - **Android:** `Project894-android-2.0.5.apk`
 
 ## Que incluye la aplicacion
 
@@ -37,11 +37,13 @@ Aplicacion de escritorio en PySide6 para automatizar la consulta y gestion local
 
 ### Android
 Aplicacion nativa Android con Jetpack Compose para consultar evidencias, calificaciones, anuncios y eventos de calendario desde Zajuna SENA.
-- interfaz moderna con Material Design 3
-- login automatizado mediante WebView
-- scraping integrado con OkHttp + Jsoup
+- interfaz moderna con Material Design 3 (incluye tema oscuro con bordes de tarjeta visibles)
+- login automatizado mediante WebView, con sesion persistente (fast-path sin re-login cuando la sesion sigue activa)
+- scraping integrado con OkHttp + Jsoup (selectores adaptados al CMS de Zajuna)
 - persistencia local con Room + SQLCipher
-- panel de notificaciones con eventos de calendario y anuncios
+- panel de notificaciones con eventos de calendario (tarjeta clickeable) y anuncios con instructor
+- acciones por pulsacion larga: seleccionar texto, compartir y abrir en navegador
+- notificacion persistente "Evento vence hoy" para vencimientos del dia
 - sincronizacion en segundo plano con WorkManager
 - busqueda, filtros por estado y ordenamiento dinamico
 - exportacion de evidencias a Excel

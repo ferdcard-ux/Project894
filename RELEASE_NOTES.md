@@ -1,5 +1,65 @@
 # Notas de la version
 
+## Version 2.0.5 (Android)
+
+**Fecha:** `2026-08-01`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Mejoras de experiencia de usuario y correcciones tras validar la 2.0.4 en hardware (Redmi Note 12 y
+Moto G22): acciones por pulsacion larga en anuncios, tarjeta de calendario clickeable completa,
+notificacion persistente para eventos que vencen hoy, instructor visible en anuncios y eventos, y
+tarjetas con borde visible en tema oscuro.
+
+### Artefacto publicado
+- `Project894-android-2.0.5.apk`
+
+### Novedades
+- **Pulsacion larga en anuncios**: en el panel de Notificaciones y en el detalle del anuncio, mantener
+  presionado abre un dialogo con "Seleccionar texto" (copiar al portapapeles), "Compartir anuncio",
+  "Abrir en navegador" y "Cancelar".
+- **Tarjeta de calendario clickeable**: se quito el boton OpenInBrowser; toda la tarjeta del evento
+  abre el enlace. La pulsacion larga abre el mismo dialogo de acciones.
+- **Notificacion "Evento vence hoy"**: notificacion fija y visible cuando un evento vence el dia
+  actual, retirada automaticamente cuando deja de aplicarse.
+- **Instructor en anuncios**: los anuncios muestran titulo, fecha e instructor separados y sin
+  duplicados.
+- **Tema oscuro mejorado**: las tarjetas tienen un contenedor propio y un borde visible en dark mode.
+
+### Correcciones
+- **Migracion de base de datos**: la nueva version incorpora una migracion declarativa de Room (2 → 3)
+  que anade columnas de instructor y vencimiento a anuncios y eventos sin perder los datos guardados.
+- **Instructor duplicado con la fecha** en la lista de anuncios (selectores del foro ajustados).
+
+### Notas de la version anterior (2.0.4)
+
+## Version 2.0.4 (Android)
+
+**Fecha:** `2026-07-31`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Hotfix de sincronizacion: el sitio de SENA empezo a rechazar las peticiones de la app con HTTP 400
+debido a la acumulacion de miles de cookies duplicadas en el almacen local. Ademas se corrigen ciclos
+de re-inicio de sesion y la exportacion de registros ahora usa el selector del sistema.
+
+> Nota: la 2.0.4 se distribuyo como actualizacion directa (hotfix) y sus cambios quedan incluidos en
+> la 2.0.5, que es el release publicado oficialmente para esta linea.
+
+### Correcciones
+- **HTTP 400 al sincronizar**: las cookies se deduplican y se limitan por peticion, evitando el
+  rechazo del cortafuegos del sitio.
+- **Sesion valida marcada como expirada**: se distingue el bloqueo temporal del cortafuegos de una
+  sesion caducada real (AuthStatus de tres estados).
+- **Auto-login repetido**: el auto-login corre una sola vez y aprovecha la sesion persistente
+  (fast-path) cuando sigue activa.
+- **Contenido de anuncios**: el detalle se recorta con `.post-content-container` para mostrar solo el
+  mensaje real.
+- **Logs**: exportacion mediante el selector de aplicaciones del sistema (share sheet), ya no se copia
+  a Descargas automaticamente.
+
+### Notas de la version anterior (2.0.3)
+
 ## Version 2.0.3 (Android)
 
 **Fecha:** `2026-07-31`

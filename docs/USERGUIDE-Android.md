@@ -42,7 +42,7 @@ Project894 Android es una aplicación nativa que te permite consultar, gestionar
    - Se programa la sincronización automática en segundo plano
    - Se redirige a la pantalla de Evidencias
 
-6. En aperturas posteriores, la app detectará las credenciales cacheadas e intentará el auto-login automáticamente.
+6. En aperturas posteriores, la app detectará las credenciales cacheadas e intentará el auto-login automáticamente. Si la sesión persistida sigue activa, entra directo sin repetir el WebView.
 
 > **Nota:** Si el login falla por problemas de conexión o cambios en Zajuna, la app puede permitir acceso offline si existen credenciales cacheadas válidas.
 
@@ -101,10 +101,19 @@ Debajo de los filtros, una barra visual muestra el estado de la última sincroni
 Esta pantalla tiene dos secciones:
 
 ### Eventos de Calendario
-Muestra los eventos académicos próximos extraídos de Zajuna. Cada evento incluye título y fecha. Presiona un evento para abrirlo en el navegador.
+Muestra los eventos académicos próximos extraídos de Zajuna. Cada evento incluye título y fecha.
+La **tarjeta completa es clickeable**: presiona para abrir el evento en el navegador (no hay botón
+separado). Mantén presionada la tarjeta para abrir el diálogo de acciones.
 
 ### Anuncios
-Muestra los anuncios del foro del curso. Cada anuncio incluye título y fecha de publicación. Presiona un anuncio para ver su detalle completo (incluye el contenido HTML renderizado en un WebView). Desde el detalle puedes abrir el anuncio en el navegador.
+Muestra los anuncios del foro del curso. Cada anuncio incluye título, fecha de publicación e
+instructor en líneas separadas. Presiona un anuncio para ver su detalle completo (incluye el
+contenido HTML renderizado en un WebView). Mantén presionado un anuncio para abrir el diálogo de
+acciones ("Seleccionar texto", "Compartir anuncio", "Abrir en navegador", "Cancelar").
+
+En el detalle, también puedes mantener presionado el contenido del anuncio (incluidos los links del
+cuerpo) para abrir el mismo diálogo: "Seleccionar texto" copia el contenido al portapapeles,
+"Compartir anuncio" comparte el enlace, "Abrir en navegador" abre el anuncio en el navegador.
 
 > **Carga instantánea:** Los datos se cargan desde la caché local primero (instantáneo), y luego se sincronizan en segundo plano para actualizar la información.
 
@@ -115,7 +124,7 @@ Muestra los anuncios del foro del curso. Cada anuncio incluye título y fecha de
 ### 6.1 Notificaciones
 
 | Opción | Descripción |
-|---|---|
+|---|---|---|
 | Activar notificaciones | Interruptor global de todas las notificaciones |
 | Progreso de evidencias | Notificar avance de sincronización de evidencias |
 | Progreso de calendario | Notificar avance de sincronización de calendario |
@@ -126,6 +135,10 @@ Muestra los anuncios del foro del curso. Cada anuncio incluye título y fecha de
 | Eventos de calendario | Notificar eventos próximos |
 
 Los subtipos solo se muestran si el interruptor global está activado.
+
+> **Evento vence hoy:** además, cuando un evento de calendario vence el día actual, la app muestra
+> una notificación fija "Evento vence hoy" (no descartable) que se retira automáticamente cuando
+> ya no hay eventos que venzan hoy.
 
 ### 6.2 Sincronización
 
@@ -139,9 +152,9 @@ Los subtipos solo se muestran si el interruptor global está activado.
 ### 6.4 Datos
 
 | Opción | Descripción |
-|---|---|
+|---|---|---|
 | Exportar a Excel | Crea un archivo Excel con todas las evidencias |
-| Exportar logs | Copia el archivo de registro de depuración a `Descargas/.Project894/` |
+| Exportar logs | Abre el share sheet del sistema con el archivo de log del día |
 
 ### 6.5 Actualizaciones
 
@@ -188,11 +201,9 @@ La app verifica nuevas versiones de dos formas:
 
 1. Ve a **Configuración** > **Exportar logs**.
 
-2. La app copia el archivo de registro del día a la carpeta `Descargas/.Project894/`.
+2. Se abre el **share sheet** del sistema con el archivo de log del día.
 
-3. Aparece un mensaje confirmando la ruta del archivo.
-
-4. Puedes acceder al archivo desde cualquier gestor de archivos en `Descargas/.Project894/`.
+3. Elige la aplicación de destino (correo, almacenamiento, etc.) para compartir o guardar el archivo.
 
 > La app conserva automáticamente solo los 3 archivos de log más recientes. Los más antiguos se eliminan.
 
@@ -226,6 +237,6 @@ La app verifica nuevas versiones de dos formas:
 ## 10. Seguridad y Privacidad
 
 - **Credenciales**: Se almacenan cifradas con Android KeyStore + EncryptedSharedPreferences.
-- **Base de datos local**: Cifrada con SQLCipher (clave derivada del almacenamiento seguro).
-- **Datos en tránsito**: Las conexiones a Zajuna usan SSL (TrustManager permisivo para certificados autofirmados del entorno educativo).
+- **Base de datos local**: Cifrada con SQLCipher (clave aleatoria protegida por el almacenamiento seguro del dispositivo).
+- **Datos en tránsito**: Las conexiones a Zajuna usan TLS real (certificados del sistema + ancla Sectigo para SENA). No se aceptan certificados arbitrarios en producción.
 - **La app no recolecta ni transmite datos personales a servidores externos**. Toda la información se procesa y almacena localmente en tu dispositivo.
