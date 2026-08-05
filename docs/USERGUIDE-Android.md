@@ -101,9 +101,13 @@ Debajo de los filtros, una barra visual muestra el estado de la última sincroni
 Esta pantalla tiene dos secciones:
 
 ### Eventos de Calendario
-Muestra los eventos académicos próximos extraídos de Zajuna. Cada evento incluye título y fecha.
-La **tarjeta completa es clickeable**: presiona para abrir el evento en el navegador (no hay botón
-separado). Mantén presionada la tarjeta para abrir el diálogo de acciones.
+Muestra los eventos académicos del curso configurado, extraídos de Zajuna. Cada evento incluye
+título y fecha. La **tarjeta completa es clickeable**: presiona para abrir el evento en el navegador
+(no hay botón separado). Mantén presionada la tarjeta para abrir el diálogo de acciones.
+
+> **Actualización de eventos:** los eventos se obtienen de la vista mensual del calendario de
+> Zajuna y se actualizan en cada sincronización (apertura de la pantalla o sincronización periódica),
+> mostrando siempre los eventos actuales del curso en lugar de datos antiguos.
 
 ### Anuncios
 Muestra los anuncios del foro del curso. Cada anuncio incluye título, fecha de publicación e

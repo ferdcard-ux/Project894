@@ -1,5 +1,29 @@
 # Notas de la version
 
+## Version 2.0.6 (Android)
+
+**Fecha:** `2026-08-04`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Correccion de sincronizacion: la seccion "Eventos de Calendario" del panel de Notificaciones
+mostraba datos en cache de hace varios dias porque la vista de proximos eventos del sitio se
+renderiza por JavaScript y llegaba vacia a la app. La 2.0.6 lee la vista mensual del calendario
+(incluye los eventos en el HTML) y muestra siempre los eventos actuales del curso.
+
+### Artefacto publicado
+- `Project894-android-2.0.6.apk`
+
+### Correcciones
+- **Eventos de Calendario desactualizados**: la vista `upcoming` del calendario del sitio se carga
+  por JavaScript, por lo que la app recibia un contenedor vacio ("No hay eventos proximos") y
+  conservaba los datos en cache de dias anteriores. Ahora se consulta la vista mensual, que incrusta
+  los eventos directamente en el HTML, y cada evento muestra su fecha (ej. "15 de agosto de 2026").
+- **Sincronizacion desde Notificaciones con el curso correcto**: la pantalla de Notificaciones usa
+  ahora el curso configurado por el usuario, igual que la sincronizacion periodica.
+
+### Notas de la version anterior (2.0.5)
+
 ## Version 2.0.5 (Android)
 
 **Fecha:** `2026-08-01`

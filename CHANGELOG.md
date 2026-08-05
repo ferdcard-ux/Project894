@@ -6,6 +6,19 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.6] - 2026-08-04
+
+### Fixed
+- **Eventos de Calendario desactualizados**: la vista de "proximos eventos" del sitio se renderiza
+  por JavaScript y la app recibia un contenedor vacio, por lo que la pantalla mostraba datos en
+  cache de dias anteriores. Ahora la app lee la vista mensual del calendario (que incluye los
+  eventos directamente en el HTML) y muestra siempre los eventos actuales del curso, con su fecha.
+- **Sincronizacion con el curso correcto desde Notificaciones**: la pantalla de Notificaciones ahora
+  sincroniza usando el curso configurado por el usuario (igual que la sincronizacion periodica).
+
+### Changed
+- Version actualizada a `2.0.6` (versionCode 16).
+
 ## [2.0.5] - 2026-08-01
 
 ### Added
