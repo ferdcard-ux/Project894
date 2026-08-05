@@ -6,6 +6,19 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.7] - 2026-08-04
+
+### Fixed
+- **Actualizacion in-app rota**: GitHub ahora devuelve el resumen SHA-256 del APK con el prefijo
+  `sha256:`, y la app lo comparaba contra el hash calculado (sin prefijo), por lo que la
+  verificacion fallaba siempre y la descarga terminaba con "Error al descargar la actualizacion".
+  Ahora la app normaliza el prefijo y la actualizacion desde Ajustes vuelve a funcionar.
+  Los dispositivos con versiones 2.0.0-2.0.5 requieren instalar el APK 2.0.7 manualmente una vez
+  para recuperar la actualizacion automatica.
+
+### Changed
+- Version actualizada a `2.0.7` (versionCode 17).
+
 ## [2.0.6] - 2026-08-04
 
 ### Fixed

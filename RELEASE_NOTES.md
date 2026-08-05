@@ -1,5 +1,33 @@
 # Notas de la version
 
+## Version 2.0.7 (Android)
+
+**Fecha:** `2026-08-04`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Correccion del sistema de actualizacion in-app. GitHub comenzó a devolver el resumen SHA-256 de
+los APK con el prefijo `sha256:`, y la app lo comparaba contra el hash calculado (sin prefijo), por
+lo que la verificacion fallaba siempre y la descarga terminaba con "Error al descargar la
+actualizacion".
+
+### Artefacto publicado
+- `Project894-android-2.0.7.apk`
+
+### Correcciones
+- **Actualizacion in-app rota**: la verificacion de integridad del APK fallaba por el prefijo
+  `sha256:` en el resumen proporcionado por GitHub. Ahora la app normaliza el prefijo y la
+  actualizacion desde Ajustes vuelve a funcionar.
+
+### Nota de instalacion
+- Los dispositivos con versiones **2.0.0 a 2.0.5** no pueden actualizarse automaticamente (el bug
+  esta en la app instalada). Deben instalar este APK manualmente una vez; a partir de ahi la
+  actualizacion automatica vuelve a funcionar.
+- Los dispositivos con versiones 1.8.0 a 1.10.0 (sin verificacion de integridad) pueden actualizarse
+  automaticamente como siempre.
+
+### Notas de la version anterior (2.0.6)
+
 ## Version 2.0.6 (Android)
 
 **Fecha:** `2026-08-04`
