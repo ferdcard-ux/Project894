@@ -1,33 +1,39 @@
 # Notas de la version
 
-## Version 2.0.8 (Android)
+## Version 2.0.9 (Android)
 
 **Fecha:** `2026-08-15`
 **Plataforma:** Android (API 26+)
 
 ### Resumen
-Correccion de la opcion "Exportar logs" de Configuracion, que no abria el share sheet y mostraba
-"Failed to find configured root". Ademas, la exportacion ahora comprime todos los registros de
-depuracion (ultimos 3 dias) en un unico `.zip`.
+Correccion del boton "Instalar ahora" de la actualizacion in-app, que en Android 14+ abria el
+dialogo generico "Abrir con" en lugar del instalador y no instalaba el APK. Ademas, se corrige el
+pop-up de Terminos y Condiciones para que los botones no queden ocultos bajo la barra de
+navegacion, y "Exportar logs" ahora pide confirmacion con una advertencia de privacidad.
 
 ### Artefacto publicado
-- `Project894-android-2.0.8.apk`
+- `Project894-android-2.0.9.apk`
 
 ### Correcciones
-- **Exportar logs no abria el share sheet**: la configuracion del FileProvider usaba `root-path`,
-  que en la libreria androidx apunta a la raiz del filesystem (`/`) y no al almacenamiento externo,
-  por lo que la URI nunca coincidia con la ruta real de los logs. Se cambio a `external-path`
-  (raiz = `/storage/emulated/0`) y el compartir vuelve a funcionar.
+- **Instalacion de la actualizacion in-app no instalaba**: `Intent.ACTION_VIEW` con
+  `application/vnd.android.package-archive` ya no resuelve al instalador de paquetes con targetSdk
+  34+ (resolvia a `com.android.intentresolver/ResolverActivity`, el dialogo "Abrir con"). Se cambio
+  a `ACTION_INSTALL_PACKAGE` (resuelve directo al instalador), se declaro el permiso
+  `REQUEST_INSTALL_PACKAGES` y, si no esta concedido, la app guia al usuario a "Instalar apps
+  desconocidas" y reintenta la instalacion al volver.
+- **Terminos y Condiciones bajo la barra de navegacion**: con edge-to-edge los botones inferiores
+  quedaban ocultos en dispositivos con botones de navegacion. Se aplica `WindowInsets.safeDrawing`.
 
 ### Cambios
-- La exportacion comprime los ultimos `app_log_*.txt` de `.logs` (hasta 3, ~3 dias) en
-  `Project894_logs_<fecha>.zip` dentro de la cache privada de la app y lo comparte con el share
-  sheet del sistema.
-- Toasts diferenciados: "No hay registros para exportar" (sin logs) y "No se pudo compartir el
-  log" (fallo).
-- Descripcion del boton: "Comprime y comparte los registros de depuracion".
+- "Exportar logs" abre un dialogo de confirmacion (Aceptar/Cancelar) que advierte que los registros
+  pueden contener informacion del dispositivo, del curso y trazas de actividad, y que el
+  desarrollador solo los usara para depuracion con la autorizacion del usuario.
+- Terminos y Condiciones: nueva seccion 9 "Registros de Depuracion". `DISCLAIMER.md`: nueva seccion
+  4 "Registros de Depuracion (logs)".
+- El repositorio publico ahora contiene solo documentacion tecnica, legal y de seguridad (se retiro
+  el plan de documentacion interno).
 
-### Notas de la version anterior (2.0.7)
+### Notas de la version anterior (2.0.8)
 
 ## Version 2.0.7 (Android)
 

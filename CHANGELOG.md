@@ -6,6 +6,28 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.9] - 2026-08-15
+
+### Fixed
+- **La instalacion de la actualizacion in-app no instalaba** en Android 14+ (Redmi Note 12, Android
+  15): se lanzaba con `Intent.ACTION_VIEW` + `application/vnd.android.package-archive`, que con
+  targetSdk 34+ ya no resuelve al instalador de paquetes sino al dialogo generico "Abrir con"
+  (o a gestores de archivos). Ahora se usa `ACTION_INSTALL_PACKAGE`, se declara el permiso
+  `REQUEST_INSTALL_PACKAGES` y, si no esta concedido, la app guia al usuario a "Instalar apps
+  desconocidas" y reintenta la instalacion al volver.
+- **Pop-up de Terminos y Condiciones bajo la barra de navegacion**: con edge-to-edge el contenido
+  se dibujaba bajo las barras del sistema y los botones inferiores quedaban ocultos. Ahora aplica
+  `WindowInsets.safeDrawing`.
+
+### Changed
+- **"Exportar logs" pide confirmacion** (Aceptar/Cancelar) con advertencia de privacidad: los
+  registros pueden contener informacion del dispositivo, del curso y trazas de actividad, y el
+  desarrollador solo los usara para depuracion con la autorizacion del usuario.
+- **Terminos y Condiciones**: nueva seccion 9 "Registros de Depuracion" (resumen) y `DISCLAIMER.md`
+  con nueva seccion 4 "Registros de Depuracion (logs)" (que contienen, que NO contienen y uso
+  autorizado).
+- Version actualizada a `2.0.9` (versionCode 19).
+
 ## [2.0.8] - 2026-08-15
 
 ### Fixed
