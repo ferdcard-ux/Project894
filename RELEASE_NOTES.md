@@ -1,5 +1,34 @@
 # Notas de la version
 
+## Version 2.0.8 (Android)
+
+**Fecha:** `2026-08-15`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Correccion de la opcion "Exportar logs" de Configuracion, que no abria el share sheet y mostraba
+"Failed to find configured root". Ademas, la exportacion ahora comprime todos los registros de
+depuracion (ultimos 3 dias) en un unico `.zip`.
+
+### Artefacto publicado
+- `Project894-android-2.0.8.apk`
+
+### Correcciones
+- **Exportar logs no abria el share sheet**: la configuracion del FileProvider usaba `root-path`,
+  que en la libreria androidx apunta a la raiz del filesystem (`/`) y no al almacenamiento externo,
+  por lo que la URI nunca coincidia con la ruta real de los logs. Se cambio a `external-path`
+  (raiz = `/storage/emulated/0`) y el compartir vuelve a funcionar.
+
+### Cambios
+- La exportacion comprime los ultimos `app_log_*.txt` de `.logs` (hasta 3, ~3 dias) en
+  `Project894_logs_<fecha>.zip` dentro de la cache privada de la app y lo comparte con el share
+  sheet del sistema.
+- Toasts diferenciados: "No hay registros para exportar" (sin logs) y "No se pudo compartir el
+  log" (fallo).
+- Descripcion del boton: "Comprime y comparte los registros de depuracion".
+
+### Notas de la version anterior (2.0.7)
+
 ## Version 2.0.7 (Android)
 
 **Fecha:** `2026-08-04`

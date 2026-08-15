@@ -11,12 +11,12 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: `v1.3.0` (escritorio) / `v2.0.7` (Android)
-- Fecha de referencia documental: `2026-08-04`
+- Release activo: `v1.3.0` (escritorio) / `v2.0.8` (Android)
+- Fecha de referencia documental: `2026-08-15`
 - Artefactos publicados por plataforma:
   - **Linux:** `Project894-x86_64.AppImage`
   - **Windows:** `Project894.exe`
-  - **Android:** `Project894-android-2.0.7.apk`
+  - **Android:** `Project894-android-2.0.8.apk`
 
 ## Que incluye la aplicacion
 

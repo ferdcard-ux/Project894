@@ -6,6 +6,25 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.8] - 2026-08-15
+
+### Fixed
+- **Exportar logs no abria el share sheet** (Toast "No se pudo compartir el log"): la configuracion
+  del FileProvider usaba `root-path`, que en la libreria androidx apunta a la raiz del filesystem
+  (`/`), no al almacenamiento externo. La URI quedaba en `/Android/data/...` y nunca coincidia con
+  la ruta real → "Failed to find configured root". Se cambio a `external-path` (raiz =
+  `/storage/emulated/0`), que si contiene la ruta de los logs.
+
+### Changed
+- **Exportar logs ahora comprime todos los registros en `.zip`**: `Project894_logs_<fecha>.zip`
+  con los ultimos `app_log_*.txt` de `.logs` (hasta 3, ~3 dias) en la cache privada de la app y lo
+  comparte con el share sheet del sistema. Reemplaza el comportamiento anterior que solo compartia
+  el log del dia.
+- Toasts diferenciados en Configuracion: "No hay registros para exportar" (sin logs) y
+  "No se pudo compartir el log" (fallo).
+- Descripcion del boton actualizada: "Comprime y comparte los registros de depuracion".
+- Version actualizada a `2.0.8` (versionCode 18).
+
 ## [2.0.7] - 2026-08-04
 
 ### Fixed
