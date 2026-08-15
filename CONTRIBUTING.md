@@ -6,6 +6,8 @@ Este repositorio recibe cambios relacionados con distribución pública, documen
 
 No es un repositorio de desarrollo de código fuente.
 
+Puedes contactar directamente al desarrollador, para reporte de fallos, bugs, mejoras, etc.
+A traves del correo eléctronico ferdcard@gmail.com o por WhatsApp @ferdcardenas
 ## Alcance permitido
 
 Cambios apropiados para este repositorio:
