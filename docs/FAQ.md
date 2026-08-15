@@ -48,7 +48,8 @@ El archivo principal es `auth_debug.log`.
 
 ### Android
 Los logs de la aplicacion Android se guardan en un directorio privado de la app
-(`Android/data/<paquete>/.logs/`). Desde Ajustes > "Exportar logs" puedes compartirlos mediante el
+(`Android/data/<paquete>/.logs/`). Desde Ajustes > "Exportar logs" y tras confirmar la advertencia de
+privacidad, se comprimen los ultimos 3 dias de registros en un `.zip` y se comparten mediante el
 selector de aplicaciones del sistema (share sheet).
 
 ## Que tecnologias usa?
@@ -84,17 +85,18 @@ Descarga `Project894-android-<version>.apk` desde la seccion de releases, habili
 
 ## En Android, que pasa al abrir la app por primera vez?
 
-Aparece un pop-up de terminos y condiciones que debes leer completamente y aceptar marcando la casilla de verificacion (se habilita al final del scroll). Si rechazas los terminos, la app se cierra.
+Aparece un pop-up de terminos y condiciones que debes leer completamente y aceptar marcando la casilla de verificacion (se habilita al final del scroll). Si rechazas los terminos, la app se cierra. El documento incluye la seccion 9 "Registros de Depuracion" (resumen) con remision a `DISCLAIMER.md`.
 
 ## Donde se guardan los logs en Android?
 
 Los logs se guardan en un directorio privado de la app (`Android/data/<paquete>/.logs/`). Para
-compartirlos, abre Ajustes > "Exportar logs" y elige la aplicacion de destino en el share sheet del
-sistema. La app conserva automaticamente solo los 3 archivos de log mas recientes.
+compartirlos, abre Ajustes > "Exportar logs" y, tras confirmar la advertencia de privacidad, se
+comprime un `.zip` con los ultimos 3 dias de registros y eliges la aplicacion de destino en el share
+sheet del sistema. La app conserva automaticamente solo los 3 archivos de log mas recientes.
 
 ## Como funciona la actualización in-app en Android?
 
-La app consulta la API de GitHub (`api.github.com/repos/ferdcard-ux/Project894/releases`) al abrir la pantalla de Ajustes. Si existe una version mas reciente de `Project894-android-*.apk`, muestra un dialogo con la nueva version, las notas del release y un boton para descargar. La descarga muestra una barra de progreso y al completarse, la app abre el instalador del sistema para que el usuario confirme la instalacion. Todo sin salir de la aplicacion.
+La app consulta la API de GitHub (`api.github.com/repos/ferdcard-ux/Project894/releases`) al abrir la pantalla de Ajustes. Si existe una version mas reciente de `Project894-android-*.apk`, muestra un dialogo con la nueva version, las notas del release y un boton para descargar. La descarga muestra una barra de progreso y al completarse, la app abre el instalador del sistema para que el usuario confirme la instalacion. Todo sin salir de la aplicacion. En Android 8+, si el permiso "Instalar apps desconocidas" no esta concedido, la app muestra "Instalacion bloqueada", guia al usuario a activarlo en Ajustes y reintenta la instalacion al volver.
 
 ## Que pasa si no hay internet al buscar actualizaciones?
 

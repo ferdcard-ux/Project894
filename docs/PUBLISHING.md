@@ -12,7 +12,7 @@ Cada release publica puede considerar, cuando aplique:
 - `Project894.exe`
 - `Project894-android-<version>.apk`
 
-En el caso del release activo `v1.3.0`, el ajuste actual consiste en reemplazar el artefacto `Project894.exe` sin crear un nuevo tag. Para las versiones de Android, cada nueva version (por ejemplo la `2.0.6`) se publica como un nuevo tag/release con su APK `Project894-android-<version>.apk`.
+En el caso del release activo `v1.3.0`, el ajuste actual consiste en reemplazar el artefacto `Project894.exe` sin crear un nuevo tag. Para las versiones de Android, cada nueva version (por ejemplo la `2.0.9`) se publica como un nuevo tag/release con su APK `Project894-android-<version>.apk`.
 
 ## Fuente de los binarios
 

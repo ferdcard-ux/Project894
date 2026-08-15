@@ -18,7 +18,7 @@ Sí, para autenticarse y extraer datos de Zajuna. Algunas secciones funcionan of
 
 ## ¿Qué pasa al abrir la app por primera vez?
 
-Aparece un pop-up de **Términos y Condiciones** que debes leer completamente. La casilla de verificación se habilita solo cuando llegas al final del scroll. Si aceptas, la app procede al login. Si rechazas, la app se cierra.
+Aparece un pop-up de **Términos y Condiciones** que debes leer completamente. La casilla de verificación se habilita solo cuando llegas al final del scroll. Si aceptas, la app procede al login. Si rechazas, la app se cierra. El documento incluye la sección 9 "Registros de Depuración" (resumen) con remisión al [DISCLAIMER.md](../DISCLAIMER.md).
 
 ## ¿Cómo se organizan las pantallas?
 
@@ -70,7 +70,7 @@ cuando un evento de calendario vence el día actual, la app muestra una notifica
 ## ¿Cómo exporto mis datos?
 
 - **Evidencias a Excel**: Desde Ajustes > Exportar a Excel. Se crea un archivo `.xlsx` con todas las evidencias.
-- **Logs de depuración**: Desde Ajustes > Exportar logs. Abre el share sheet del sistema para compartir/guardar el archivo de log del día.
+- **Logs de depuración**: Desde Ajustes > Exportar logs. Tras confirmar la advertencia, comprime los registros de los últimos 3 días en un `.zip` y abre el share sheet para compartirlo/guardarlo.
 
 ## ¿Cómo funciona la actualización in-app?
 
@@ -94,7 +94,7 @@ La app verifica nuevas versiones de dos formas:
 
 - **Internet**: Para conectarse a Zajuna y GitHub.
 - **Notificaciones** (Android 13+): Para mostrar notificaciones push.
-- **Instalar apps desconocidas** (solo para actualización): Al descargar una actualización, la app abre el instalador del sistema.
+- **Instalar apps desconocidas** (solo para actualización): Al descargar una actualización, la app abre el instalador del sistema. Si el permiso no está concedido (Android 8+), la app muestra "Instalación bloqueada" y te guía a Ajustes para activarlo; al volver, la instalación continúa automáticamente.
 
 ## ¿Qué pasa si Zajuna cambia su interfaz?
 

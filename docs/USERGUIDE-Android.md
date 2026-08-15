@@ -20,7 +20,7 @@ Project894 Android es una aplicación nativa que te permite consultar, gestionar
 
 3. Abre el archivo APK y presiona "Instalar".
 
-4. Al abrir la app por primera vez, aparecerá un pop-up de **Términos y Condiciones**. Debes leer el documento completo (desplázate hasta el final), marcar la casilla "He leído y acepto los términos y condiciones" y presionar "Aceptar" para continuar. Si presionas "Rechazar", la app se cierra.
+4. Al abrir la app por primera vez, aparecerá un pop-up de **Términos y Condiciones**. Debes leer el documento completo (desplázate hasta el final), marcar la casilla "He leído y acepto los términos y condiciones" y presionar "Aceptar" para continuar. Si presionas "Rechazar", la app se cierra. El documento incluye la sección 9 "Registros de Depuración" (resumen) con remisión al [DISCLAIMER.md](../DISCLAIMER.md).
 
 ---
 
@@ -158,7 +158,7 @@ Los subtipos solo se muestran si el interruptor global está activado.
 | Opción | Descripción |
 |---|---|---|
 | Exportar a Excel | Crea un archivo Excel con todas las evidencias |
-| Exportar logs | Abre el share sheet del sistema con el archivo de log del día |
+| Exportar logs | Pide confirmación y comparte un `.zip` con los registros de depuración de los últimos 3 días |
 
 ### 6.5 Actualizaciones
 
@@ -196,6 +196,7 @@ La app verifica nuevas versiones de dos formas:
 1. Presiona **"Descargar"** para iniciar la descarga. Verás una barra de progreso con el porcentaje.
 2. Al completar la descarga, presiona **"Instalar ahora"** para abrir el instalador del sistema.
 3. Confirma la instalación en la pantalla del sistema Android.
+4. En Android 8+, si "Instalar apps desconocidas" no está permitido para la app, aparece el diálogo **"Instalación bloqueada"**: toca **"Abrir ajustes"**, activa el permiso y vuelve a la app; la instalación se reintenta automáticamente.
 
 > **Nota:** Si no hay internet al verificar, la app no muestra ningún mensaje. Puedes forzar la verificación manual desde Ajustes > Buscar actualizaciones.
 
@@ -205,11 +206,13 @@ La app verifica nuevas versiones de dos formas:
 
 1. Ve a **Configuración** > **Exportar logs**.
 
-2. Se abre el **share sheet** del sistema con el archivo de log del día.
+2. Aparece un diálogo de advertencia con la información que pueden contener los registros (dispositivo, curso, trazas de actividad). Presiona **"Aceptar"** para continuar o **"Cancelar"** para abortar.
 
-3. Elige la aplicación de destino (correo, almacenamiento, etc.) para compartir o guardar el archivo.
+3. Se comprimen los registros de los últimos 3 días en `Project894_logs_<fecha>.zip` y se abre el **share sheet** del sistema.
 
-> La app conserva automáticamente solo los 3 archivos de log más recientes. Los más antiguos se eliminan.
+4. Elige la aplicación de destino (correo, almacenamiento, etc.) para compartir o guardar el archivo.
+
+> La app conserva automáticamente solo los 3 archivos de log más recientes. Los más antiguos se eliminan. Los registros no se envían a ningún servidor: solo se comparten por acción explícita del usuario. Consulta la sección 4 de [DISCLAIMER.md](../DISCLAIMER.md) para el detalle del descargo de responsabilidad.
 
 ---
 
