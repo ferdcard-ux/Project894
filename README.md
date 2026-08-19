@@ -11,12 +11,11 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: `v1.3.0` (escritorio) / `v2.0.9` (Android)
+- Release activo: **`v2.0.9`** (Android)
 - Fecha de referencia documental: `2026-08-15`
 - Artefactos publicados por plataforma:
-  - **Linux:** `Project894-x86_64.AppImage`
-  - **Windows:** `Project894.exe`
   - **Android:** `Project894-android-2.0.9.apk`
+  - **Linux / Windows:** en desarrollo (las versiones anteriores fueron retiradas; ver [NOTA_ARTEFACTOS.md](NOTA_ARTEFACTOS.md))
 
 ## Que incluye la aplicacion
 
@@ -87,6 +86,7 @@ Artefactos disponibles por plataforma:
 
 - [README-Win.md](README-Win.md) — Documentacion para Windows
 - [BUILD_WINDOWS.md](BUILD_WINDOWS.md) — Guia de compilacion Windows
+- [NOTA_ARTEFACTOS.md](NOTA_ARTEFACTOS.md) — Nota sobre la limpieza de artefactos y estado de las versiones Linux/Windows
 - [CHANGELOG.md](CHANGELOG.md) — Historial de versiones (todas las plataformas)
 - [RELEASE_NOTES.md](RELEASE_NOTES.md) — Notas de version
 - [docs/USERGUIDE.md](docs/USERGUIDE.md) — Guia de usuario escritorio (Linux/Windows)
