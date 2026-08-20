@@ -11,10 +11,10 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: **`v2.0.9`** (Android)
-- Fecha de referencia documental: `2026-08-15`
+- Release activo: **`v2.0.10`** (Android)
+- Fecha de referencia documental: `2026-08-20`
 - Artefactos publicados por plataforma:
-  - **Android:** `Project894-android-2.0.9.apk`
+  - **Android:** `Project894-android-2.0.10.apk`
   - **Linux / Windows:** en desarrollo (las versiones anteriores fueron retiradas; ver [NOTA_ARTEFACTOS.md](NOTA_ARTEFACTOS.md))
 
 ## Que incluye la aplicacion

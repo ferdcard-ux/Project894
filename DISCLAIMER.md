@@ -35,3 +35,11 @@ La aplicación genera archivos de registro (logs) para fines de depuración y di
 - El desarrollador **no los comparte con terceros** ni los utiliza con fines comerciales.
 - Los registros pueden contener información sensible o institucional. **El usuario es responsable del uso, custodia y difusión** del archivo exportado; se recomienda eliminarlo tras el diagnóstico.
 - Los registros no se envían automáticamente a ningún servidor: se exportan únicamente por acción explícita del usuario.
+
+### 5. Propiedad Intelectual
+Project894 es un **desarrollo privado** y **NO es código abierto**. Únicamente el **repositorio de distribución** y su contenido son públicos. Cualquier usuario puede solicitar una copia del código fuente, sugerir mejoras y reportar o corregir fallos, sujeto a la aprobación del desarrollador. El desarrollador **se reserva los derechos de aprobación o admisión**.
+
+### 6. Enlaces a Repositorios y Contribuciones
+- El **código fuente** se aloja en un **repositorio privado**.
+- **Repositorio de distribución (público):** [github.com/ferdcard-ux/Project894](https://github.com/ferdcard-ux/Project894)
+- Para mayor información sobre **contribuciones o contacto con el desarrollador**, consulte [`CONTRIBUTING.md`](https://github.com/ferdcard-ux/Project894/blob/master/CONTRIBUTING.md).
