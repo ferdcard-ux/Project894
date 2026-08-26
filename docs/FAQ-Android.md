@@ -54,7 +54,7 @@ La sincronización automática se programa después del login exitoso y puede co
 
 ## ¿Qué notificaciones recibo?
 
-La app tiene 4 canales de notificación:
+La app tiene **5 canales de notificación**:
 
 | Canal | Disparador |
 |---|---|
@@ -62,10 +62,16 @@ La app tiene 4 canales de notificación:
 | Alertas | Evidencias próximas a vencer (≤7 días) y **eventos que vencen hoy** |
 | Calendario | Eventos de calendario próximos |
 | Anuncios | Nuevos anuncios del curso |
+| **Notificaciones del sistema Zajuna** | Mensajes privados, foros, tareas, quizzes, calificaciones, avisos del sistema |
 
 Puedes habilitar/deshabilitar cada tipo individualmente desde Ajustes > Notificaciones. Además,
 cuando un evento de calendario vence el día actual, la app muestra una notificación fija
 "Evento vence hoy" que se retira automáticamente cuando ya no aplica.
+
+Las **notificaciones del sistema Zajuna** se capturan desde `message/output/popup/notifications.php`
+y se muestran en una sección dedicada en la pantalla de Notificaciones (con contador de no leídas,
+tarjeta clickeable para abrir URL + mark-as-read, y long-press para acciones). El push nativo usa
+el canal `channel_zajuna_notifications` (importancia HIGH).
 
 ## ¿Cómo exporto mis datos?
 

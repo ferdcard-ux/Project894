@@ -6,6 +6,37 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.11] - 2026-08-26
+
+### Added
+- **Notificaciones del sistema Zajuna**: captura, persistencia y visualizacion de notificaciones nativas de Moodle/Zajuna (mensajes privados, foros, tareas, quizzes, calificaciones, avisos) desde `message/output/popup/notifications.php`.
+- **Push nativo** con canal `channel_zajuna_notifications` (HIGH importance) y deep link al panel de notificaciones.
+- **Seccion en panel de notificaciones** con contador de no leidas, tap para abrir URL + mark-as-read, long-press con acciones.
+- **Toggle en Configuracion** para habilitar/deshabilitar notificaciones del sistema Zajuna.
+- **Room v4**: entidad `zajuna_notifications` + `app_metadata`, migracion `MIGRATION_3_4` con 3 indices.
+- **8 tests unitarios** para clasificacion heuristica `inferType()`.
+
+### Fixed
+- **ANR en Moto G22 causado por keystore2 del sistema**: el daemon `keystore2` del dispositivo estaba en bucle de fallo `KEY_REQUIRES_UPGRADE` (63% CPU, 65 ANRs del sistema/noche). La app era victima visible, no causante. Resuelto con reboot del dispositivo.
+- **Keystore de firma recuperado**: el `release.jks` no existia en este equipo; recuperado desde otro equipo y `.gitignore` corregido a `*.jks`.
+- **Extraccion automatica no autorizada en instalacion limpia**: SyncWorker ejecutaba la sincronizacion de evidencias sin esperar la autorizacion del usuario. Corregido con flag `first_evidences_extraction_authorized` en DataStore; SyncWorker omite la extraccion si no hay autorizacion y la BD esta vacia; dialogo de autorizacion en UI; SyncWorker omite evidencias sin autorizacion cuando la BD esta vacia.
+
+### Changed
+- Version actualizada a `2.0.11` (versionCode 21).
+
+## [2.0.10] - 2026-08-20
+
+### Added
+- **Hardening contra ingenieria inversa (Fase 1)**: R8 + `shrinkResources` con reglas `-keep` para Hilt/WorkManager/Compose, keystore de release propio + verificacion de firma en runtime, ofuscacion XOR de URLs/hosts/hash criticos.
+- **Proteccion anti-tampering**: la app detecta APK re-firmado en runtime (solo release) y bloquea la ejecucion con dialogo.
+- **Ofuscacion de strings criticos**: URLs de login/SENA/GitHub, host/dominio, hash de firma esperada.
+
+### Changed
+- **Terminos y Condiciones (secciones 6 y 7)**: el proyecto es desarrollo privado (NO open source); solo el repositorio de distribucion es publico. Solicitudes de codigo fuente sujetas a aprobacion.
+- **DISCLAIMER.md**: alineado con propiedad intelectual y enlaces a repositorios.
+- Version actualizada a `2.0.10` (versionCode 20).
+- **Keystore rotado**: nueva firma SHA-256 `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b` (requiere reinstalacion manual unica desde 2.0.9).
+
 ## [2.0.9] - 2026-08-15
 
 ### Fixed

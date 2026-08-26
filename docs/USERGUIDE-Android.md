@@ -98,7 +98,7 @@ Debajo de los filtros, una barra visual muestra el estado de la última sincroni
 
 ## 5. Pantalla de Notificaciones
 
-Esta pantalla tiene dos secciones:
+Esta pantalla tiene **tres secciones**:
 
 ### Eventos de Calendario
 Muestra los eventos académicos del curso configurado, extraídos de Zajuna. Cada evento incluye
@@ -120,6 +120,18 @@ cuerpo) para abrir el mismo diálogo: "Seleccionar texto" copia el contenido al 
 "Compartir anuncio" comparte el enlace, "Abrir en navegador" abre el anuncio en el navegador.
 
 > **Carga instantánea:** Los datos se cargan desde la caché local primero (instantáneo), y luego se sincronizan en segundo plano para actualizar la información.
+
+### Notificaciones del Sistema Zajuna
+Muestra las notificaciones nativas de la plataforma Zajuna/Moodle (mensajes privados, suscripciones a foros, tareas, quizzes, calificaciones, avisos del sistema). Cada notificación incluye:
+- **Tipo** con icono: Mensaje (sobre), Foro (burbuja), Tarea (lista), Quiz (cuestionario), Calificación (estrella), Sistema (engranaje), General (campana).
+- **Título** y **fecha/hora**.
+- **Contador de no leídas** en la cabecera de la sección.
+- **Tarjeta clickeable**: presiona para abrir la URL de la notificación en el navegador y marcarla como leída localmente.
+- **Mantener presionado**: abre diálogo con "Seleccionar texto" (copia al portapapeles), "Compartir notificación", "Abrir en navegador", "Cancelar".
+
+> **Push nativo:** Cuando llega una nueva notificación del sistema, la app muestra una notificación push (canal `channel_zajuna_notifications`, importancia HIGH). Tocar la push abre directamente esta sección del panel con deep link.
+
+> **Toggle en Configuración:** "Notificaciones del sistema Zajuna" para habilitar/deshabilitar individualmente.
 
 ---
 

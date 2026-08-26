@@ -1,5 +1,68 @@
 # Notas de la version
 
+## Version 2.0.11 (Android)
+
+**Fecha:** `2026-08-26`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Implementacion del sistema de notificaciones nativas de Zajuna/Moodle: captura, persistencia y visualizacion de mensajes privados, suscripciones a foros, tareas, quizzes, calificaciones y avisos del sistema. Incluye push nativo, panel con mark-as-read y deep link. Ademas, se resolvio un incidente de ANR en Moto G22 causado por el daemon keystore2 del sistema (no de la app).
+
+### Artefacto publicado
+- `Project894-android-2.0.11.apk`
+
+### Novedades
+- **Notificaciones del sistema Zajuna**: scraping de `message/output/popup/notifications.php` con parseo server-rendered. Clasificacion heuristica `inferType()` (MESSAGE, FORUM_SUBSCRIPTION, ASSIGNMENT, QUIZ, GRADE, SYSTEM, GENERAL) con prioridad MESSAGE y tolerancia a tildes. ID determinista por hash titulo+URL para evitar push duplicados.
+- **Push nativo**: canal `channel_zajuna_notifications` (IMPORTANCE_HIGH). Tap en push abre el panel de notificaciones con deep link (`EXTRA_OPEN_NOTIFICATIONS_PANEL`).
+- **Panel de notificaciones**: nueva seccion "Notificaciones del sistema" con contador de no leidas, tarjeta clickeable (abre URL + mark-as-read), long-press con dialogo de acciones (Seleccionar texto / Compartir / Abrir en navegador).
+- **Toggle en Configuracion**: "Notificaciones del sistema Zajuna" para habilitar/deshabilitar individualmente.
+- **Room v4**: entidad `zajuna_notifications` + `app_metadata` (timestamp limpieza >30 dias), migracion `MIGRATION_3_4` con 3 indices. Upsert preservando estado local `read`.
+- **Tests**: 8 casos unitarios en `ZajunaNotificationTypeTest` (clasificacion, valueOf defensivo, tildes, prioridad MESSAGE).
+
+### Correcciones
+22: - **ANR en Moto G22 (keystore2 del sistema)**: el daemon `keystore2` del dispositivo estaba en bucle `KEY_REQUIRES_UPGRADE` (63% CPU, 65 ANRs/noche, bitwarden incluido). La app se colgaba en `EncryptedSharedPreferences.create()` en hilo principal durante inyeccion Hilt. **No es bug de la app** — la app era victima visible. Resuelto con reboot (reinicia keystore2). Mejora futura: mover creacion passphrase/DB a `Dispatchers.IO`.
+24: - **Keystore de firma recuperado**: `release.jks` no existia en el equipo de build; recuperado desde equipo anterior (SHA-256 verificado `ae123c42...356a39` contra LEEME). `.gitignore` corregido a `*.jks`.
+25: - **Extraccion automatica no autorizada en instalacion limpia**: SyncWorker ejecutaba la sincronizacion de evidencias sin esperar la autorizacion del usuario. Corregido con flag `first_evidences_extraction_authorized` en DataStore; SyncWorker omite la extraccion si no hay autorizacion y la BD esta vacia; dialogo de autorizacion en UI con botones "Extraer ahora" / "Ahora no"; SyncWorker omite evidencias sin autorizacion cuando la BD esta vacia.
+
+### Notas de instalacion
+- **Actualizacion OTA compatible**: misma firma que 2.0.10 (SHA-256 `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`). Dispositivos en 2.0.10 actualizan normalmente.
+- **Desde 2.0.9 o anterior**: requiere reinstalacion manual unica (rotacion de keystore en 2.0.10).
+
+### Pendiente E2E real
+Validacion del ciclo completo (panel -> push -> deep link -> mark-as-read) requiere notificacion genuina en la cuenta Zajuna (mensaje privado o mencion en foro); la cuenta de prueba tiene 0.
+
+---
+
+## Version 2.0.10 (Android)
+
+**Fecha:** `2026-08-20`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Release de hardening (Fase 1) + correccion de terminos legales. Implementa ofuscacion, R8/shrinkResources, verificacion de firma en runtime, anti-tampering y keystore propio. Corrige el pop-up de Terminos para reflejar que el proyecto es desarrollo privado (no open source).
+
+### Artefacto publicado
+- `Project894-android-2.0.10.apk`
+
+### Seguridad (Hardening Fase 1)
+- **R8 + shrinkResources** habilitado en release con reglas `-keep` para Hilt/WorkManager/Compose/FileProvider.
+- **Verificacion de firma en runtime**: la app calcula SHA-256 de su certificado de firma y lo compara contra hash embebido ofuscado. Si no coincide (APK re-firmado/reempaquetado), muestra dialogo de bloqueo y cierra.
+- **Ofuscacion XOR** (clave `0x5A`) de strings criticos: URLs de login/SENA/GitHub, host/dominio, hash de firma esperado.
+- **Keystore de release propio**: `~/.config/project894/release.jks` (alias `project894`). Nuevo fingerprint SHA-256: `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`.
+- **APK minificado**: 21 MB (vs ~43 MB sin minificar). Endpoints `/zajuna/*` (estructura, sin host) siguen visibles en DEX: limitacion aceptada en Fase 1.
+
+### Cambios legales
+- **Terminos y Condiciones (secciones 6 y 7)**: "Project894 es un desarrollo privado y NO es codigo abierto. Solo el repositorio de distribucion y su contenido son publicos; cualquier usuario puede solicitar copia del codigo fuente, sugerir mejoras o reportar/corregir fallos, sujeto a aprobacion del desarrollador, que se reserva los derechos de aprobacion o admision". Enlace a "Repositorio de distribucion: github.com/ferdcard-ux/Project894" y "Guia de contribuciones y contacto: CONTRIBUTING.md".
+- **DISCLAIMER.md**: nuevas secciones "Propiedad Intelectual" y "Enlaces a Repositorios y Contribuciones" alineadas.
+
+### Importante: Rotacion de keystore
+La 2.0.10 usa un **nuevo keystore de release** (distinto al de 2.0.0-2.0.9). La actualizacion OTA 2.0.9 -> 2.0.10 es **incompatible** (Android rechaza la actualizacion por firma distinta). Los dispositivos con 2.0.9 o anterior requieren **reinstalacion manual unica** del APK 2.0.10. Esto es por decision de diseño (base de usuarios minima, ver `docs/PLAN_HARDENING.md` §5.3).
+
+### Validacion en hardware
+- **Moto G22 + Redmi Note 12**: auto-login online exitoso (sesion AUTHENTICATED), 385 evidencias cargadas, sin FATAL/ANR. Diagnostico de cuelgue de sistema (ANR SystemUI) descartado Project894; culpable: fork KDE Connect (heartbeat/reconexion con timeout falso bajo Doze/optimizacion bateria MIUI).
+
+---
+
 ## Version 2.0.9 (Android)
 
 **Fecha:** `2026-08-15`
