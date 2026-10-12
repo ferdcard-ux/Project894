@@ -11,10 +11,10 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: **`v2.0.11`** (Android)
-- Fecha de referencia documental: `2026-08-26`
+- Release activo: **`v2.0.12`** (Android)
+- Fecha de referencia documental: `2026-10-12`
 - Artefactos publicados por plataforma:
-  - **Android:** `Project894-android-2.0.11.apk`
+  - **Android:** `Project894-android-2.0.12.apk`
   - **Linux / Windows:** en desarrollo (las versiones anteriores fueron retiradas; ver [NOTA_ARTEFACTOS.md](NOTA_ARTEFACTOS.md))
 
 ## Que incluye la aplicacion
@@ -40,12 +40,13 @@ Aplicacion nativa Android con Jetpack Compose para consultar evidencias, calific
 - login automatizado mediante WebView, con sesion persistente (fast-path sin re-login cuando la sesion sigue activa)
 - scraping integrado con OkHttp + Jsoup (selectores adaptados al CMS de Zajuna)
 - persistencia local con Room + SQLCipher
-- panel de notificaciones con eventos de calendario (tarjeta clickeable) y anuncios con instructor
+- panel de notificaciones con eventos de calendario (tarjeta clickeable), anuncios con instructor y notificaciones del sistema Zajuna (cabeceras apilables, detalle in-app)
 - acciones por pulsacion larga: seleccionar texto, compartir y abrir en navegador
 - notificacion persistente "Evento vence hoy" para vencimientos del dia
 - sincronizacion en segundo plano con WorkManager
-- busqueda, filtros por estado y ordenamiento dinamico
-- exportacion de evidencias a Excel
+- busqueda, filtros por estado con contador por pestana (Todas, Pendientes, Evaluadas, Vencidas) y ordenamiento A-Z por codigo por defecto
+- etiquetas multiples por tarjeta (por ejemplo EVALUADA + VENCIDA); notas del instructor visibles solo en Evaluadas
+- exportacion de evidencias a Excel (escritor XLSX propio, sin dependencias)
 - notificaciones push con 4 canales nativos
 - cache-first para carga instantanea
 - indicador de estado de sincronizacion en la pantalla de evidencias

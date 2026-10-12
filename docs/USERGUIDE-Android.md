@@ -56,14 +56,16 @@ Es la pantalla principal donde puedes ver y gestionar todas tus evidencias acad�
 Escribe en la barra superior para filtrar evidencias por título o código en tiempo real. Para limpiar la búsqueda, borra el texto.
 
 ### Filtros por estado
-Usa las pestañas debajo de la barra de búsqueda:
+Usa las pestañas debajo de la barra de búsqueda. Cada pestaña muestra entre paréntesis el total de evidencias que contiene (por ejemplo **Todas: 211**, **Pendientes: 4**, **Evaluadas: 199**, **Vencidas: 3**), recalculado automáticamente cada vez que cambian los datos:
 - **Todas**: Muestra todas las evidencias.
 - **Pendientes**: Solo evidencias no entregadas.
 - **Evaluadas**: Solo evidencias con calificación.
 - **Vencidas**: Solo evidencias cuya fecha de cierre ya pasó.
 
+Al tocar una pestaña, la lista se recarga y vuelve al inicio de forma inmediata (no espera una nueva extracción).
+
 ### Ordenamiento
-Presiona el ícono de ordenamiento para cambiar el criterio. Las opciones varían según el filtro activo:
+Por defecto la lista se ordena **Código A-Z** (orden natural: GA1, GA2… GA10…, EV01, EV02…). Presiona el ícono de ordenamiento para cambiar el criterio. Las opciones varían según el filtro activo:
 
 | Filtro activo | Opciones de ordenamiento |
 |---|---|
@@ -75,13 +77,13 @@ Cada evidencia se muestra como una tarjeta con:
 - **Título** (enlace web: presiona para abrir en el navegador)
 - **Código** de la evidencia (seleccionable para copiar al portapapeles)
 - **Descripción** textual
-- **Estado** con badge de color:
-  - Pendiente (amarillo)
+- **Estado** con insignias de color (puede mostrar **más de una** cuando aplican varias, por ejemplo **Evaluada + Vencida** si está calificada pero su fecha ya pasó):
+  - Pendiente / Por vencer (amarillo)
   - Vencida (rojo)
   - Entregada (azul)
   - Evaluada (verde)
 - **Fechas**: Apertura y Cierre
-- **Calificación** (solo visible en filtro Evaluadas)
+- **Calificación y comentario del instructor** (solo visibles en la pestaña Evaluadas; en Todas quedan ocultos)
 - **Instructor** asignado
 
 ### Sincronizar datos

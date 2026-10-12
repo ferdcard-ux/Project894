@@ -6,6 +6,28 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.12] - 2026-10-12
+
+### Added
+- **Contadores por pestana** en Evidencias: cada chip muestra su total ("Todas: 211", "Pendientes: 4", "Evaluadas: 199", "Vencidas: 3"), recalculado con cada cambio de datos.
+- **Etiquetas multiples por tarjeta**: se apilan cuando aplican varias (por ejemplo EVALUADA + VENCIDA); el estado real se deriva de fechas/flags aunque Zajuna envie el texto vacio.
+- **Detalle in-app de notificaciones del sistema**: se abren dentro de la app con formato limpio (titulo + fecha + mensaje), sin el chrome de la pagina.
+- **Notificaciones del sistema via AJAX** (`message_popup_get_popup_notifications`, con fallback al popover HTML).
+- **Exportacion XLSX propia** (`XlsxWriter`), sin dependencias (reemplaza a Apache POI).
+
+### Changed
+- **Orden A-Z por codigo por defecto** (orden natural: GA1, GA2... GA10..., EV01...).
+- **Cabeceras del panel de Notificaciones apiladas**: cada una se fija al llegar arriba y las siguientes se apilan debajo sin ocultar a las anteriores; solo se contrae su contenido.
+- **Tocar una pestana** recarga su contenido y sube la lista al inicio (sin extraccion fresca).
+- **Notas del instructor (Calificacion/Comentario) solo en la pestana Evaluadas**.
+- **Limite de notificaciones no leidas** ampliado de 10 a 100.
+- **Room v5** (`MIGRATION_4_5`): columna `full_html` para el detalle in-app.
+- Version actualizada a `2.0.12` (versionCode 22); firma OTA compatible con 2.0.10/2.0.11.
+
+### Fixed
+- **Exportacion a Excel en release**: Apache POI lanzaba `ExceptionInInitializerError`/`NoClassDefFoundError` bajo R8; reemplazado por el escritor propio.
+- **Etiqueta duplicada**: retirado el chip rosa "Vencida" que duplicaba la insignia de estado.
+
 ## [2.0.11] - 2026-08-26
 
 ### Added

@@ -1,5 +1,45 @@
 # Notas de la version
 
+## Version 2.0.12 (Android)
+
+**Fecha:** `2026-10-12`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Paquete de mejoras de usabilidad sobre la gestion de evidencias y el panel de notificaciones: contadores por pestana, etiquetas multiples por tarjeta, orden A-Z por defecto, cabeceras apilables, detalle in-app de notificaciones del sistema, notas del instructor solo en Evaluadas y exportacion a Excel con un escritor XLSX propio (sin dependencias).
+
+### Artefacto publicado
+- `Project894-android-2.0.12.apk`
+
+### Novedades
+- **Contadores por pestana** en Evidencias: cada chip muestra su total ("Todas: 211", "Pendientes: 4", "Evaluadas: 199", "Vencidas: 3"), recalculado con cada cambio de datos.
+- **Etiquetas multiples por tarjeta**: se apilan cuando aplican varias (por ejemplo EVALUADA + VENCIDA); el estado real se deriva de fechas/flags aunque Zajuna envie el texto vacio.
+- **Detalle in-app de notificaciones del sistema**: se abren dentro de la app con formato limpio (titulo + fecha + mensaje), sin el chrome de la pagina.
+- **Notificaciones del sistema via AJAX** (`message_popup_get_popup_notifications`, con fallback al popover HTML).
+- **Exportacion XLSX propia** (`XlsxWriter`), sin dependencias.
+
+### Mejoras
+- **Orden A-Z por codigo por defecto** (orden natural: GA1, GA2... GA10..., EV01...).
+- **Cabeceras del panel de Notificaciones apiladas**: cada una se fija al llegar arriba y las siguientes se apilan debajo sin ocultar a las anteriores; solo se contrae su contenido.
+- **Tocar una pestana** recarga su contenido y sube la lista al inicio (sin extraccion fresca).
+- **Notas del instructor (Calificacion/Comentario) solo en la pestana Evaluadas**.
+- **Limite de notificaciones no leidas** ampliado de 10 a 100.
+- **Room v5** (`MIGRATION_4_5`): columna `full_html` para el detalle in-app.
+- Version actualizada a `2.0.12` (versionCode 22).
+
+### Correcciones
+- **Exportacion a Excel en release**: Apache POI lanzaba `ExceptionInInitializerError`/`NoClassDefFoundError` bajo R8; reemplazado por el escritor propio.
+- **Etiqueta duplicada**: retirado el chip rosa "Vencida" que duplicaba la insignia de estado.
+
+### Notas de instalacion
+- **Actualizacion OTA compatible**: misma firma que 2.0.10/2.0.11 (SHA-256 `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`). Los dispositivos en 2.0.10 o 2.0.11 actualizan normalmente.
+- **Desde 2.0.9 o anterior**: requiere reinstalacion manual unica (rotacion de keystore en 2.0.10).
+
+### Validacion en hardware
+- Moto G22: contadores en vivo, notas ocultas en Todas, cabeceras apiladas progresivas y re-tocar pestana sin nueva extraccion. Redmi Note 12 reservado para la prueba OTA de 2.0.12.
+
+---
+
 ## Version 2.0.11 (Android)
 
 **Fecha:** `2026-08-26`
@@ -20,9 +60,9 @@ Implementacion del sistema de notificaciones nativas de Zajuna/Moodle: captura, 
 - **Tests**: 8 casos unitarios en `ZajunaNotificationTypeTest` (clasificacion, valueOf defensivo, tildes, prioridad MESSAGE).
 
 ### Correcciones
-22: - **ANR en Moto G22 (keystore2 del sistema)**: el daemon `keystore2` del dispositivo estaba en bucle `KEY_REQUIRES_UPGRADE` (63% CPU, 65 ANRs/noche, bitwarden incluido). La app se colgaba en `EncryptedSharedPreferences.create()` en hilo principal durante inyeccion Hilt. **No es bug de la app** — la app era victima visible. Resuelto con reboot (reinicia keystore2). Mejora futura: mover creacion passphrase/DB a `Dispatchers.IO`.
-24: - **Keystore de firma recuperado**: `release.jks` no existia en el equipo de build; recuperado desde equipo anterior (SHA-256 verificado `ae123c42...356a39` contra LEEME). `.gitignore` corregido a `*.jks`.
-25: - **Extraccion automatica no autorizada en instalacion limpia**: SyncWorker ejecutaba la sincronizacion de evidencias sin esperar la autorizacion del usuario. Corregido con flag `first_evidences_extraction_authorized` en DataStore; SyncWorker omite la extraccion si no hay autorizacion y la BD esta vacia; dialogo de autorizacion en UI con botones "Extraer ahora" / "Ahora no"; SyncWorker omite evidencias sin autorizacion cuando la BD esta vacia.
+- **ANR en Moto G22 (keystore2 del sistema)**: el daemon `keystore2` del dispositivo estaba en bucle `KEY_REQUIRES_UPGRADE` (63% CPU, 65 ANRs/noche, bitwarden incluido). La app se colgaba en `EncryptedSharedPreferences.create()` en hilo principal durante inyeccion Hilt. **No es bug de la app** — la app era victima visible. Resuelto con reboot (reinicia keystore2). Mejora futura: mover creacion passphrase/DB a `Dispatchers.IO`.
+- **Keystore de firma recuperado**: `release.jks` no existia en el equipo de build; recuperado desde equipo anterior (SHA-256 verificado `ae123c42...356a39` contra LEEME). `.gitignore` corregido a `*.jks`.
+- **Extraccion automatica no autorizada en instalacion limpia**: SyncWorker ejecutaba la sincronizacion de evidencias sin esperar la autorizacion del usuario. Corregido con flag `first_evidences_extraction_authorized` en DataStore; SyncWorker omite la extraccion si no hay autorizacion y la BD esta vacia; dialogo de autorizacion en UI con botones "Extraer ahora" / "Ahora no"; SyncWorker omite evidencias sin autorizacion cuando la BD esta vacia.
 
 ### Notas de instalacion
 - **Actualizacion OTA compatible**: misma firma que 2.0.10 (SHA-256 `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`). Dispositivos en 2.0.10 actualizan normalmente.
