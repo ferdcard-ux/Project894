@@ -11,10 +11,10 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: **`v2.0.12`** (Android)
-- Fecha de referencia documental: `2026-10-12`
+- Release activo: **`v2.0.13`** (Android)
+- Fecha de referencia documental: `2026-10-15`
 - Artefactos publicados por plataforma:
-  - **Android:** `Project894-android-2.0.12.apk`
+  - **Android:** `Project894-android-2.0.13.apk`
   - **Linux / Windows:** en desarrollo (las versiones anteriores fueron retiradas; ver [NOTA_ARTEFACTOS.md](NOTA_ARTEFACTOS.md))
 
 ## Que incluye la aplicacion
@@ -45,7 +45,10 @@ Aplicacion nativa Android con Jetpack Compose para consultar evidencias, calific
 - notificacion persistente "Evento vence hoy" para vencimientos del dia
 - sincronizacion en segundo plano con WorkManager
 - busqueda, filtros por estado con contador por pestana (Todas, Pendientes, Evaluadas, Vencidas) y ordenamiento A-Z por codigo por defecto
-- etiquetas multiples por tarjeta (por ejemplo EVALUADA + VENCIDA); notas del instructor visibles solo en Evaluadas
+- etiquetas multiples por tarjeta (por ejemplo EVALUADA + VENCIDA), apiladas solo cuando ambas aplican
+- **detalle in-app de evidencia**: al tocar la tarjeta se abre el contenido limpio de la evidencia, incluida la seccion "Estado de la entrega" (intento, estado de la entrega, estado de la calificacion, ultima modificacion, archivos y comentarios), con un bloque informativo que varia segun la pestana de origen
+- **descarga de archivos adjuntos** desde la fila "Archivos enviados", eligiendo donde guardarlos sin salir de la app
+- **etiquetas manuales** en la pestana "Todas" (ENVIADA, NO ASIGNADA, PENDIENTE, VENCIDA) con bloqueo de las que ya asigna el sistema y retirada automatica si Zajuna evalua la evidencia
 - exportacion de evidencias a Excel (escritor XLSX propio, sin dependencias)
 - notificaciones push con 4 canales nativos
 - cache-first para carga instantanea

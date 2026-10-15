@@ -6,6 +6,25 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.13] - 2026-10-15
+
+### Fixed
+- **La insignia EVALUADA ya no se asigna a evidencias sin calificar**: el reporte de notas incluye actividades sin calificar (celda "-") y toda fila se etiquetaba como evaluada sin mirar la nota. Ahora solo se consideran las que tienen nota real (de 199 filas del reporte, 108 calificadas y 91 descartadas).
+- **Sin evidencias ficticias**: los items del reporte que no corresponden a una evidencia del curso ya no se insertan como tarjetas. El inventario paso de 211 a 198 evidencias reales y las evaluadas de 199 a 99.
+- **El estado real de Zajuna manda**: la etiqueta ya no se impone sobre el estado que Zajuna informa.
+- **Evidencias con codigo corto recuperadas**: tres evidencias (`AA1-EV01`, `AA4-EV01`, `AA4-EV02`) no recibian EVALUADA aunque Zajuna las mostrara calificadas, porque su codigo no se extraia y no podia fusionarse con el reporte de notas. Ademas ahora muestran su codigo y son buscables por el.
+- **Tabla "Estado de la entrega" conservada** en el detalle (la limpieza del contenido descartaba las tablas).
+
+### Added
+- **Detalle in-app de evidencia**: tocar la tarjeta abre dentro de la app el contenido limpio de la evidencia, con la seccion completa "Estado de la entrega" (numero de intento, estado de la entrega, estado de la calificacion, tiempo restante, ultima modificacion, archivos enviados y comentarios) y, en evidencias calificadas, la tabla de calificacion y retroalimentacion del instructor. El bloque informativo superior cambia segun la pestana de origen. El titulo sigue abriendo el navegador.
+- **Etiquetas manuales en la pestana "Todas"**: boton en la esquina inferior derecha de cada tarjeta que despliega `ENVIADA`, `NO ASIGNADA`, `PENDIENTE` y `VENCIDA`. `EVALUADA` no es asignable, lo ya automatico aparece bloqueado y la etiqueta manual se retira sola si Zajuna evalua la evidencia.
+- **Descarga de archivos adjuntos**: al tocar un archivo de "Archivos enviados" se elige donde guardarlo y se descarga con la sesion de Zajuna.
+
+### Changed
+- **Room v6**: columna de etiqueta manual en evidencias; las etiquetas se conservan entre sincronizaciones.
+- **Sin imagenes en el detalle de evidencias** (en Zajuna son imagenes decorativas que no cargan y se veia su texto alternativo). Los anuncios y notificaciones del sistema si las muestran.
+- Version actualizada a `2.0.13` (versionCode 23); firma OTA compatible con 2.0.10/2.0.11/2.0.12.
+
 ## [2.0.12] - 2026-10-12
 
 ### Added

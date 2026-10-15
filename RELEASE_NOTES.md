@@ -1,5 +1,73 @@
 # Notas de la version
 
+## Version 2.0.13 (Android)
+
+**Fecha:** `2026-10-15`
+**Plataforma:** Android (API 26+)
+
+### Resumen
+Correccion de la fiabilidad de las etiquetas de estado: la insignia EVALUADA ya no se asigna a
+evidencias que Zajuna no tiene calificadas. En el camino se elimino el inventario de evidencias
+ficticias y se recupero la insignia de tres evidencias cuyo codigo no se extraccion. Incluye ademas
+el detalle in-app de la evidencia (con la seccion completa "Estado de la entrega"), etiquetas
+manuales en la pestana "Todas" y la descarga de los archivos adjuntos.
+
+### Artefacto publicado
+- `Project894-android-2.0.13.apk`
+
+### Correcciones
+- **EVALUADA solo con nota real**: el reporte de notas de Zajuna incluye actividades sin calificar
+  cuya celda de nota viene como "-". Se marcaba como evaluada **toda** fila sin comprobar la nota, de
+  modo que evidencias nunca calificadas aparecian como evaluadas. Ahora solo se toman las que tienen
+  calificacion real (letra A-F, verbal "Excelente" o numerica "10 / 10"): de 199 filas del reporte,
+  **108 estan calificadas y 91 se descartan**.
+- **Sin evidencias ficticias**: los items del reporte que no corresponden a una evidencia del curso
+  ya no se insertan como tarjetas sueltas. El inventario pasa de **211 a 198** evidencias reales y las
+  evaluadas de **199 a 99**.
+- **El estado real de Zajuna manda**: un dato del reporte ya no se impone sobre el estado que Zajuna
+  informa.
+- **Tres evidencias recuperadas** (`Infografia. AA1-EV01`, `Cuadro sinoptico. AA4-EV01`,
+  `Taller. AA4-EV02`): su codigo corto no se extraia, por lo que no podia fusionarse con el reporte
+  de notas y quedaban sin EVALUADA aunque Zajuna las mostrara calificadas. Ahora muestran su codigo y
+  son buscables por el.
+- **Tabla "Estado de la entrega" conservada** en el detalle: la limpieza del contenido descartaba las
+  tablas y la seccion llegaba como un bloque de texto corrido.
+
+### Novedades
+- **Detalle in-app de evidencia**: tocar la tarjeta (en cualquier pestaña) abre dentro de la app el
+  contenido limpio, incluida la seccion **"Estado de la entrega"** (numero de intento, estado de la
+  entrega, estado de la calificacion, tiempo restante, ultima modificacion, archivos enviados y
+  comentarios) y, en evidencias calificadas, la tabla de calificacion y retroalimentacion del
+  instructor. El bloque informativo superior cambia segun la pestaña desde la que se abrio. El titulo
+  sigue abriendo la evidencia en el navegador.
+- **Etiquetas manuales** en la pestana "Todas": boton en la esquina inferior derecha que despliega
+  `ENVIADA`, `NO ASIGNADA`, `PENDIENTE` y `VENCIDA`. `EVALUADA` nunca es asignable, lo ya asignado
+  por el sistema aparece bloqueado con candado y la etiqueta manual se retira sola si Zajuna evalua
+  la evidencia.
+- **Descarga de archivos adjuntos**: al tocar un archivo de la fila "Archivos enviados" se elige
+  donde guardarlo y se descarga con la sesion de Zajuna.
+
+### Mejoras
+- **Sin imagenes en el detalle de evidencias**: en Zajuna son imagenes decorativas que no cargan y el
+  WebView terminaba mostrando su texto alternativo. Los anuncios y notificaciones del sistema si las
+  conservan.
+- Las etiquetas manuales se conservan entre sincronizaciones.
+- La columna "Estado" del Excel exporta todas las etiquetas (por ejemplo `EVALUADA + VENCIDA`).
+- Version actualizada a `2.0.13` (versionCode 23).
+
+### Notas de instalacion
+- **Actualizacion OTA compatible**: misma firma que 2.0.10/2.0.11/2.0.12 (SHA-256
+  `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`). Los dispositivos en 2.0.10 o
+  posteriores actualizan normalmente.
+- **Desde 2.0.9 o anterior**: requiere reinstalacion manual unica (rotacion de keystore en 2.0.10).
+
+### Validacion en hardware
+- Moto G22: inventario de 198 evidencias con **102 evaluadas** (todas con calificacion real) y 7
+  pendientes; descarga verificada de un PDF (368 KB) y de un ZIP (254 KB, 4 entradas); tabla de
+  entrega, etiquetas manuales y detalle in-app comprobados en las cuatro pestanas.
+
+---
+
 ## Version 2.0.12 (Android)
 
 **Fecha:** `2026-10-12`

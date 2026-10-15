@@ -25,24 +25,60 @@ Aparece un pop-up de **Términos y Condiciones** que debes leer completamente. L
 La app tiene 3 pantallas principales: **Evidencias** (inicio), accesible desde la barra superior con
 iconos de **Notificaciones** y **Configuración**; **Notificaciones** muestra eventos de calendario y
 anuncios; **Configuración** contiene los ajustes. Desde Notificaciones se accede al **Detalle de
-Anuncio**.
+Anuncio**; desde Evidencias, tocando la tarjeta, al **Detalle de Evidencia** (in-app).
 
 | Pantalla | Descripción |
 |---|---|
-| **Evidencias** | Lista de evidencias con búsqueda, filtros por estado y ordenamiento. |
+| **Evidencias** | Lista de evidencias con búsqueda, filtros por estado con contador, ordenamiento y etiquetas. Tocar una tarjeta abre su detalle. |
 | **Notificaciones** | Eventos de calendario próximos y anuncios del foro. |
 | **Configuración** | Ajustes de notificaciones, sincronización, exportación y actualización. |
 
 ## ¿Qué filtros y ordenamientos tiene la pantalla de Evidencias?
 
-**Filtros por estado:**
+**Filtros por estado** (cada pestaña muestra su contador, p. ej. "Todas: 198"):
 - Todas, Pendientes, Evaluadas, Vencidas
 
-**Ordenamiento (según filtro activo):**
+**Ordenamiento** (por defecto **Código A-Z**; según filtro activo):
 - Todas/Pendientes/Vencidas: Default, Código A-Z, Código Z-A, Fecha ↑, Fecha ↓
 - Evaluadas: Default, Código A-Z, Código Z-A, Calificación
 
-Además, puedes buscar por título o código usando la barra de búsqueda.
+Al tocar una pestaña, la lista vuelve al inicio. La Calificación y el Comentario del instructor solo
+se muestran en la pestaña **Evaluadas**. Además, puedes buscar por título o código usando la barra de búsqueda.
+
+## ¿Cómo veo el detalle de una evidencia?
+
+Toca la tarjeta (no el título) en cualquiera de las pestañas: **Todas**, **Pendientes**, **Evaluadas**
+o **Vencidas**. Se abrirá dentro de la app con el contenido limpio de la evidencia, incluida la
+sección **"Estado de la entrega"** (intento, estado de la entrega, estado de la calificación, tiempo
+restante, última modificación, archivos enviados y comentarios) y, si está calificada, la tabla con la
+nota, la fecha, el docente y sus comentarios. El bloque de arriba cambia según la pestaña desde la que
+abriste la evidencia.
+
+El título de la tarjeta sigue abriendo la evidencia en el navegador, igual que antes. Las imágenes no
+se muestran en el detalle porque en Zajuna son imágenes decorativas que no cargan.
+
+## ¿Puedo descargar los archivos que adjunté?
+
+Sí. En la fila **"Archivos enviados"** del detalle, toca el nombre del archivo: la app abre el diálogo
+para que elijas dónde guardarlo y lo descarga con tu sesión de Zajuna. El resto de enlaces del detalle
+se abren en el navegador.
+
+## ¿Qué son las etiquetas manuales?
+
+En la pestaña **"Todas"**, cada tarjeta tiene un botón de etiqueta en su esquina inferior derecha. Al
+tocarlo se despliegan cuatro opciones predefinidas: **ENVIADA**, **NO ASIGNADA**, **PENDIENTE** y
+**VENCIDA**. Aplican estas reglas para no duplicar información:
+
+- **EVALUADA no se puede asignar a mano**: es el estado real de Zajuna.
+- Si la evidencia ya tiene esa etiqueta asignada automáticamente, la opción aparece **bloqueada con candado**.
+- Si Zajuna pasa la evidencia a **EVALUADA**, la etiqueta manual **se retira sola** en la siguiente sincronización.
+- Las etiquetas manuales se conservan al sincronizar.
+
+## ¿Por qué una evidencia sale EVALUADA si en Zajuna no está calificada?
+
+Ya no debería ocurrir. Se corrigió en la 2.0.13: antes se marcaba como evaluada **toda fila** del
+reporte de notas, incluidas las actividades sin calificar (celda "-"). Ahora solo se consideran las que
+tienen una nota real.
 
 ## ¿Cómo se actualizan los datos?
 

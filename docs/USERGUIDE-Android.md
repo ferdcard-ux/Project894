@@ -64,6 +64,44 @@ Usa las pestañas debajo de la barra de búsqueda. Cada pestaña muestra entre p
 
 Al tocar una pestaña, la lista se recarga y vuelve al inicio de forma inmediata (no espera una nueva extracción).
 
+### Ver el detalle de una evidencia
+
+**Toca la tarjeta** (no el título) y se abrirá dentro de la app el contenido de la evidencia. Verás:
+
+- **Título, código, etiquetas de estado y fechas** arriba.
+- Un **aviso según la pestaña desde la que abriste**: en *Pendientes* los días que faltan para el cierre; en *Evaluadas* la calificación y el comentario; en *Vencidas* el cierre y los días vencidos.
+- La **descripción** de la actividad.
+- La sección **"Estado de la entrega"**: número de intento, estado de la entrega, estado de la calificación, tiempo restante, última modificación, **archivos enviados** y comentarios.
+- En evidencias calificadas, la tabla con la calificación, la fecha, el docente y sus comentarios.
+
+Desde la barra superior puedes **recargar** el contenido o **abrir la evidencia en el navegador** (esta última opción sigue disponible también tocando directamente el título de la tarjeta).
+
+> Las imágenes de la descripción no se muestran en esta vista: en Zajuna son imágenes decorativas que no cargan.
+
+### Etiquetas manuales (pestaña "Todas")
+
+En la pestaña **"Todas"**, cada tarjeta tiene un pequeño botón de etiqueta en su esquina inferior derecha. Al tocarlo se despliega la lista:
+
+| Etiqueta | Cuándo usarla |
+|---|---|
+| **ENVIADA** | La entregaste y está pendiente de calificar |
+| **NO ASIGNADA** | Aún no tiene docente asignado |
+| **PENDIENTE** | Te falta entregarla |
+| **VENCIDA** | Ya pasó la fecha de cierre |
+
+Reglas del sistema:
+
+- **`EVALUADA` no se puede asignar a mano**: es el estado real en Zajuna y se actualiza solo.
+- Si la evidencia **ya tiene esa etiqueta puesta automáticamente**, la opción aparece bloqueada con un candado, para no repetirla.
+- Si Zajuna pasa la evidencia a **EVALUADA**, tu etiqueta manual **se quita sola** en la siguiente sincronización: manda el estado real.
+- Las etiquetas manuales se conservan aunque sincronices.
+
+### Descargar los archivos que adjuntaste
+
+En la fila **"Archivos enviados"** del detalle, toca el nombre del archivo: la app abre el diálogo
+para que elijas dónde guardarlo y lo descarga con tu sesión de Zajuna. El resto de enlaces del
+detalle se abren en el navegador.
+
 ### Ordenamiento
 Por defecto la lista se ordena **Código A-Z** (orden natural: GA1, GA2… GA10…, EV01, EV02…). Presiona el ícono de ordenamiento para cambiar el criterio. Las opciones varían según el filtro activo:
 
