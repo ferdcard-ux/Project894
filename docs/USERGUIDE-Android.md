@@ -60,7 +60,13 @@ Usa las pestañas debajo de la barra de búsqueda. Cada pestaña muestra entre p
 - **Todas**: Muestra todas las evidencias.
 - **Pendientes**: Solo evidencias no entregadas.
 - **Evaluadas**: Solo evidencias con calificación.
-- **Vencidas**: Solo evidencias cuya fecha de cierre ya pasó.
+- **Por evaluar**: Evidencias que ya entregaste (tienen recursos cargados en Zajuna) y todavía no registran evaluación. Incluye también las que marcaste a mano como **ENVIADA**.
+- **Vencidas**: Solo evidencias cuya fecha de cierre ya pasó y que no entregaste.
+- **SofiaPlus**: No son evidencias de Zajuna, sino tus juicios evaluativos de Sofía Plus (ver [Pestaña SofiaPlus](#pestaña-sofiaplus-juicios-evaluativos)).
+
+La fila de pestañas se desliza hacia los lados: **Por evaluar**, **Vencidas** y **SofiaPlus** quedan a la derecha.
+
+> Una evidencia entregada **no pasa a "Vencida"** aunque su fecha de cierre ya haya pasado: se queda en **Por evaluar** hasta que el instructor la califique.
 
 Al tocar una pestaña, la lista se recarga y vuelve al inicio de forma inmediata (no espera una nueva extracción).
 
@@ -94,21 +100,16 @@ Reglas del sistema:
 - **`EVALUADA` no se puede asignar a mano**: es el estado real en Zajuna y se actualiza solo.
 - Si la evidencia **ya tiene esa etiqueta puesta automáticamente**, la opción aparece bloqueada con un candado, para no repetirla.
 - Si Zajuna pasa la evidencia a **EVALUADA**, tu etiqueta manual **se quita sola** en la siguiente sincronización: manda el estado real.
-- Las etiquetas manuales se conservan aunque sincronices.
-
-### Descargar los archivos que adjuntaste
-
-En la fila **"Archivos enviados"** del detalle, toca el nombre del archivo: la app abre el diálogo
-para que elijas dónde guardarlo y lo descarga con tu sesión de Zajuna. El resto de enlaces del
-detalle se abren en el navegador.
+- Las etiquetas manuales se conservan aunque sincronices o cambies de dispositivo con la misma cuenta.
 
 ### Ordenamiento
 Por defecto la lista se ordena **Código A-Z** (orden natural: GA1, GA2… GA10…, EV01, EV02…). Presiona el ícono de ordenamiento para cambiar el criterio. Las opciones varían según el filtro activo:
 
 | Filtro activo | Opciones de ordenamiento |
 |---|---|
-| Todas / Pendientes / Vencidas | Default, Código A-Z, Código Z-A, Fecha ↑, Fecha ↓ |
+| Todas / Pendientes / Por evaluar / Vencidas | Default, Código A-Z, Código Z-A, Fecha ↑, Fecha ↓ |
 | Evaluadas | Default, Código A-Z, Código Z-A, Calificación (A→F) |
+| SofiaPlus | Sin ordenamiento: conserva el orden de Sofía Plus |
 
 ### Tarjeta de evidencia
 Cada evidencia se muestra como una tarjeta con:
@@ -119,6 +120,7 @@ Cada evidencia se muestra como una tarjeta con:
   - Pendiente / Por vencer (amarillo)
   - Vencida (rojo)
   - Entregada (azul)
+  - Por evaluar (morado)
   - Evaluada (verde)
 - **Fechas**: Apertura y Cierre
 - **Calificación y comentario del instructor** (solo visibles en la pestaña Evaluadas; en Todas quedan ocultos)
@@ -127,27 +129,42 @@ Cada evidencia se muestra como una tarjeta con:
 ### Sincronizar datos
 Presiona el botón flotante (FAB) con ícono de actualizar para forzar una sincronización manual. Verás un indicador de progreso mientras se actualizan los datos.
 
-### Indicador de sincronización
-Debajo de los filtros, una barra visual muestra el estado de la última sincronización:
-- **Check verde + "Última sync: hace X min (N evidencias)"**: Sincronización exitosa reciente.
-- **Check rojo + "Sync fallida"**: La última sincronización encontró un error.
-- **Spinner + "Sincronizando..."**: Sincronización en progreso.
-- **Oculto**: La app nunca se ha sincronizado en esta sesión.
+Si la pestaña activa es **SofiaPlus**, ese mismo botón actualiza los juicios de Sofía Plus en lugar de las evidencias de Zajuna.
+
+### Pestaña SofiaPlus (juicios evaluativos)
+
+La pestaña **SofiaPlus** muestra los juicios evaluativos que registra Sofía Plus para tu ficha: el estado oficial de cada resultado de aprendizaje.
+
+**Primera vez.** Al tocar la pestaña sin datos, la app muestra un aviso y te pide autorización. Si aceptas con **"Extraer ahora"**, ingresa a Sofía Plus con las mismas credenciales que guardaste para Zajuna (no tienes que escribirlas de nuevo) y trae los juicios. Tarda unos segundos.
+
+> **Conexión sin cifrar:** Sofía Plus no ofrece conexión segura (solo HTTP). Al ingresar, tu documento y tu clave viajan sin cifrar, igual que cuando entras desde un navegador. Evita hacer la extracción en redes Wi-Fi públicas. La app nunca entra a Sofía Plus sin que lo hayas autorizado.
+
+**Qué verás:**
+
+- Una **tarjeta por competencia**, con el número de resultados aprobados (por ejemplo *2 de 4 resultados aprobados*).
+- Dentro de cada tarjeta, cada **resultado de aprendizaje** con su juicio:
+  - **APROBADO** (verde)
+  - **POR EVALUAR** (naranja)
+  - **NO APROBADO** (rojo)
+- Filtros propios: **Todos**, **Aprobados**, **Por evaluar** y, si existe alguno, **No aprobados**, cada uno con su contador.
+- La barra de búsqueda busca por competencia o por resultado de aprendizaje.
+
+**Actualización.** Los juicios cambian poco, así que la app los revisa sola **una vez al día**, dentro de la sincronización en segundo plano. Puedes forzar la actualización cuando quieras con el botón de sincronizar. La franja superior indica cuándo fue la última actualización.
+
+**Sin conexión.** Los juicios quedan guardados en el dispositivo. Si una actualización falla, se conservan los últimos datos.
+
+> Si Sofía Plus rechaza tus credenciales (por ejemplo, porque allí tienes una clave distinta a la de Zajuna), la actualización diaria se pausa para no bloquear tu cuenta con reintentos. Se reanuda cuando actualices manualmente y el ingreso funcione.
 
 ---
 
 ## 5. Pantalla de Notificaciones
 
-Esta pantalla tiene **tres secciones**:
+Esta pantalla tiene **tres secciones**. Las tres cabeceras se **apilan progresivamente** al deslizar: cada una se fija arriba y las siguientes se colocan debajo sin ocultar ni empujar a las anteriores; solo se contrae el contenido de cada sección y, al volver arriba, se despliega de nuevo.
 
 ### Eventos de Calendario
-Muestra los eventos académicos del curso configurado, extraídos de Zajuna. Cada evento incluye
-título y fecha. La **tarjeta completa es clickeable**: presiona para abrir el evento en el navegador
-(no hay botón separado). Mantén presionada la tarjeta para abrir el diálogo de acciones.
-
-> **Actualización de eventos:** los eventos se obtienen de la vista mensual del calendario de
-> Zajuna y se actualizan en cada sincronización (apertura de la pantalla o sincronización periódica),
-> mostrando siempre los eventos actuales del curso en lugar de datos antiguos.
+Muestra los eventos académicos próximos extraídos de Zajuna. Cada evento incluye título y fecha.
+La **tarjeta completa es clickeable**: presiona para abrir el evento en el navegador (no hay botón
+separado). Mantén presionada la tarjeta para abrir el diálogo de acciones.
 
 ### Anuncios
 Muestra los anuncios del foro del curso. Cada anuncio incluye título, fecha de publicación e
@@ -159,19 +176,19 @@ En el detalle, también puedes mantener presionado el contenido del anuncio (inc
 cuerpo) para abrir el mismo diálogo: "Seleccionar texto" copia el contenido al portapapeles,
 "Compartir anuncio" comparte el enlace, "Abrir en navegador" abre el anuncio en el navegador.
 
-> **Carga instantánea:** Los datos se cargan desde la caché local primero (instantáneo), y luego se sincronizan en segundo plano para actualizar la información.
-
 ### Notificaciones del Sistema Zajuna
 Muestra las notificaciones nativas de la plataforma Zajuna/Moodle (mensajes privados, suscripciones a foros, tareas, quizzes, calificaciones, avisos del sistema). Cada notificación incluye:
 - **Tipo** con icono: Mensaje (sobre), Foro (burbuja), Tarea (lista), Quiz (cuestionario), Calificación (estrella), Sistema (engranaje), General (campana).
 - **Título** y **fecha/hora**.
 - **Contador de no leídas** en la cabecera de la sección.
-- **Tarjeta clickeable**: presiona para abrir la URL de la notificación en el navegador y marcarla como leída localmente.
+- **Tarjeta clickeable**: presiona para abrir el **detalle dentro de la app** (título + fecha + mensaje, con el mismo formato limpio que los anuncios) y marcarla como leída. Desde la barra superior del detalle puedes abrir la URL original en el navegador.
 - **Mantener presionado**: abre diálogo con "Seleccionar texto" (copia al portapapeles), "Compartir notificación", "Abrir en navegador", "Cancelar".
 
 > **Push nativo:** Cuando llega una nueva notificación del sistema, la app muestra una notificación push (canal `channel_zajuna_notifications`, importancia HIGH). Tocar la push abre directamente esta sección del panel con deep link.
 
 > **Toggle en Configuración:** "Notificaciones del sistema Zajuna" para habilitar/deshabilitar individualmente.
+
+> **Carga instantánea:** Los datos se cargan desde la caché local primero (instantáneo), y luego se sincronizan en segundo plano para actualizar la información.
 
 ---
 
@@ -196,6 +213,13 @@ Los subtipos solo se muestran si el interruptor global está activado.
 > una notificación fija "Evento vence hoy" (no descartable) que se retira automáticamente cuando
 > ya no hay eventos que venzan hoy.
 
+> **Sin avisos repetidos:** cada evento (calendario, anuncio, notificación de Zajuna, vencimiento o
+> sesión expirada) se notifica en el teléfono **una sola vez**, aunque reinicies el dispositivo. Al
+> instalar la app, lo que ya existía se toma como historial. Una evidencia por vencer avisa como mucho
+> dos veces (al entrar en la ventana de 1-3 días y el día del cierre). Los avisos de progreso de
+> sincronización se muestran en una única notificación que se actualiza. "Sesión expirada" solo
+> aparece si Zajuna rechaza tus credenciales y desaparece sola cuando la sesión se recupera.
+
 ### 6.2 Sincronización
 
 - **Sincronización automática**: Activa o desactiva la sincronización periódica en segundo plano.
@@ -208,9 +232,22 @@ Los subtipos solo se muestran si el interruptor global está activado.
 ### 6.4 Datos
 
 | Opción | Descripción |
-|---|---|---|
-| Exportar a Excel | Crea un archivo Excel con todas las evidencias |
+|---|---|
+| Exportar a Excel | Crea un archivo Excel con los datos que elijas (ver la lista de abajo) |
 | Exportar logs | Pide confirmación y comparte un `.zip` con los registros de depuración de los últimos 3 días |
+
+Al tocar **Exportar a Excel** eliges qué exportar y luego dónde guardar el archivo:
+
+| Opción | Archivo sugerido | Contenido |
+|---|---|---|
+| Todas las evidencias | `Project894_Evidencias_Todas.xlsx` | Todo el inventario |
+| Evidencias pendientes | `Project894_Evidencias_Pendientes.xlsx` | Las no entregadas |
+| Evidencias evaluadas | `Project894_Evidencias_Evaluadas.xlsx` | Las calificadas |
+| Evidencias por evaluar | `Project894_Evidencias_PorEvaluar.xlsx` | Las entregadas sin evaluación |
+| Evidencias vencidas | `Project894_Evidencias_Vencidas.xlsx` | Las vencidas sin entrega |
+| Juicios evaluativos (Sofía Plus) | `Project894_Juicios_SofiaPlus.xlsx` | Competencia, Resultado de Aprendizaje y Juicio de Evaluación |
+
+Para exportar los juicios primero debes haberlos extraído desde la pestaña **SofiaPlus**.
 
 ### 6.5 Actualizaciones
 
@@ -280,6 +317,12 @@ La app verifica nuevas versiones de dos formas:
 - Verifica que la sincronización automática esté activada en Ajustes.
 - Revisa tu conexión a internet.
 
+### La pestaña SofiaPlus no trae juicios
+- Lee el mensaje de la franja superior de la pestaña: indica la causa.
+- **"Sofía Plus rechazó las credenciales"**: tu clave de Sofía Plus no coincide con la guardada para Zajuna. Verifica que sea la misma en ambos portales y vuelve a intentar con el botón de sincronizar.
+- **"No se pudo conectar con Sofía Plus"**: el portal puede estar caído o lento; inténtalo más tarde. Los juicios ya guardados no se pierden.
+- **"La cuenta no tiene disponible el rol Aprendiz"**: Sofía Plus no muestra ese rol para tu usuario; confírmalo entrando al portal desde un navegador.
+
 ### No llegan notificaciones
 - Verifica que las notificaciones estén activadas en Ajustes.
 - Revisa los permisos de la app en Ajustes del sistema > Notificaciones.
@@ -298,4 +341,5 @@ La app verifica nuevas versiones de dos formas:
 - **Credenciales**: Se almacenan cifradas con Android KeyStore + EncryptedSharedPreferences.
 - **Base de datos local**: Cifrada con SQLCipher (clave aleatoria protegida por el almacenamiento seguro del dispositivo).
 - **Datos en tránsito**: Las conexiones a Zajuna usan TLS real (certificados del sistema + ancla Sectigo para SENA). No se aceptan certificados arbitrarios en producción.
+- **Sofía Plus (excepción)**: ese portal solo ofrece HTTP, así que su tráfico —incluidos el documento y la clave al ingresar— viaja sin cifrar. La app lo permite únicamente para `senasofiaplus.edu.co`, lo advierte antes de la primera extracción y no entra a Sofía Plus sin tu autorización. Los juicios extraídos se guardan en la misma base de datos cifrada.
 - **La app no recolecta ni transmite datos personales a servidores externos**. Toda la información se procesa y almacena localmente en tu dispositivo.

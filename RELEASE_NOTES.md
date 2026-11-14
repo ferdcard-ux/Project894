@@ -1,5 +1,63 @@
 # Notas de la version
 
+## Version 2.0.14 (Android)
+
+**Fecha:** `2026-11-14`
+**Plataforma:** Android (API 26+)
+**versionCode:** 24
+
+### Resumen
+Llegan los **juicios evaluativos de Sofia Plus** a la app, una pestana **"Por evaluar"** con las
+evidencias entregadas que esperan calificacion y la exportacion de ambas a Excel. Las notificaciones
+dejan de repetirse: cada evento se avisa una sola vez. Se corrigen la perdida de estados cuando Zajuna
+responde a medias y la falsa alarma de "Sesion expirada".
+
+### Artefacto publicado
+- `Project894-android-2.0.14.apk`
+
+### Novedades
+- **Pestana SofiaPlus**: una tarjeta por competencia con sus resultados de aprendizaje y el juicio de
+  cada uno (`APROBADO` verde, `POR EVALUAR` naranja, `NO APROBADO` rojo), con filtros
+  Todos / Aprobados / Por evaluar / No aprobados y busqueda. Usa las mismas credenciales de Zajuna,
+  se extrae **una vez al dia** (o a demanda con el boton de sincronizar) y queda guardada para
+  consulta sin conexion.
+- **Pestana "Por evaluar"**: evidencias con entrega registrada en Zajuna que aun no tienen
+  calificacion.
+- **Exportacion a Excel**: "Juicios evaluativos (Sofia Plus)" y "Evidencias por evaluar".
+
+### Mejoras
+- **Cada evento se notifica una sola vez** (calendario, anuncios, notificaciones de Zajuna,
+  vencimientos y sesion), incluso tras reiniciar el telefono. Al instalar o actualizar, lo que ya
+  existia se toma como historial.
+- El progreso de sincronizacion se muestra en **una unica notificacion** que se actualiza.
+- Las alertas de vencimiento son como mucho dos por evidencia (al entrar en la ventana de 1-3 dias y
+  el dia del cierre).
+- Una evidencia entregada ya no pasa a VENCIDA por fecha: muestra POR EVALUAR.
+
+### Correcciones
+- Los estados **EVALUADA** y **POR EVALUAR** ya no se pierden cuando Zajuna responde a medias
+  (tiempos de espera): se conservan los ya conocidos.
+- "Sesion expirada" ya no aparece cuando Zajuna esta caido (p. ej. HTTP 503 tras reiniciar el
+  telefono); solo cuando rechaza las credenciales, y se retira sola al recuperarse la sesion.
+
+### Seguridad
+- **Sofia Plus solo ofrece HTTP**: el documento y la clave viajan sin cifrar al ingresar a ese portal,
+  igual que desde un navegador. La app lo advierte y no entra a Sofia Plus sin tu autorizacion; el
+  resto de la app sigue exigiendo HTTPS. Evita la extraccion en redes Wi-Fi publicas.
+- Proceso de firma reforzado sin cambiar la identidad de firma.
+
+### Notas de instalacion
+- **Actualizacion OTA compatible**: misma firma que 2.0.10 a 2.0.13 (SHA-256
+  `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`). Los dispositivos en 2.0.10 o
+  posteriores actualizan normalmente, sin perder datos.
+- **Desde 2.0.9 o anterior**: requiere reinstalacion manual unica (rotacion de keystore en 2.0.10).
+
+### Validacion en hardware
+- Moto G22: extraccion de Sofia Plus, exportacion de juicios y de "Por evaluar", extraccion diaria
+  automatica y registro de avisos (la segunda sincronizacion no repitio ningun aviso) verificados.
+
+---
+
 ## Version 2.0.13 (Android)
 
 **Fecha:** `2026-10-15`

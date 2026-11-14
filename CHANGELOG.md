@@ -6,6 +6,26 @@ Este documento sigue una convencion inspirada en Keep a Changelog y versionado s
 
 ## [Unreleased]
 
+## [2.0.14] - 2026-11-14
+
+### Added
+- **Pestana "SofiaPlus"**: juicios evaluativos de Sofia Plus por competencia y resultado de aprendizaje (APROBADO / POR EVALUAR / NO APROBADO), con filtros y busqueda. Usa las mismas credenciales de Zajuna, se actualiza una vez al dia y queda guardada para consulta sin conexion. Sofia Plus solo ofrece HTTP: la app lo advierte y pide autorizacion antes de la primera extraccion.
+- **Pestana "Por evaluar"**: evidencias con entrega registrada en Zajuna que aun no tienen calificacion.
+- **Exportacion a Excel** de los juicios de Sofia Plus y de las evidencias por evaluar.
+
+### Changed
+- Una evidencia entregada ya no pasa a VENCIDA por fecha: muestra POR EVALUAR mientras espera calificacion.
+- **Cada evento se notifica una sola vez** (calendario, anuncios, notificaciones de Zajuna, vencimientos, sesion), incluso tras reiniciar el telefono; lo que ya existia al instalar se toma como historial. El progreso de sincronizacion usa una unica notificacion y las alertas de vencimiento son como mucho dos por evidencia.
+
+### Fixed
+- Los estados EVALUADA y POR EVALUAR ya no se pierden cuando Zajuna responde a medias (tiempos de espera).
+- Ya no aparece la falsa alarma "Sesion expirada" cuando Zajuna esta caido (HTTP 503); solo se avisa si rechaza las credenciales.
+
+- Version actualizada a `2.0.14` (versionCode 24).
+
+### Security
+- Proceso de firma reforzado: misma identidad de firma de siempre (SHA-256 `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`), por lo que la actualizacion in-app desde 2.0.10 o posterior sigue funcionando sin reinstalar.
+
 ## [2.0.13] - 2026-10-15
 
 ### Fixed

@@ -56,7 +56,7 @@ Project894 Public
 ## Flujo del artefacto Android
 
 1. El APK se compila y firma en el entorno interno de Android (release, `Project894-android-<version>.apk`).
-2. Se valida en hardware real (instalacion y pruebas en dispositivos) antes de publicar.
+2. Se verifica la firma con `apksigner verify --print-certs` (SHA-256 `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`, la misma desde 2.0.10) y se valida en hardware real (instalacion y pruebas en dispositivos) antes de publicar.
 3. Se actualiza la documentacion publica: `README.md`, `CHANGELOG.md`, `RELEASE_NOTES.md`,
    `docs/USERGUIDE-Android.md` y `docs/FAQ-Android.md`.
 4. Se sube el APK como asset del release en GitHub correspondiente a la nueva version.

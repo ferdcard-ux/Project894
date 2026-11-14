@@ -34,9 +34,22 @@ Este repositorio no debe generar builds por si mismo.
 4. Reemplazar el asset `Project894.exe` dentro del release activo `v1.3.0`.
 5. Verificar que el release conserve la descripcion correcta y que el enlace de descarga apunte al binario actualizado.
 
+## Flujo recomendado para publicar una version de Android
+
+1. Compilar el release en el entorno interno con la clave de publicacion (el script interno de build verifica la firma).
+2. Verificar el APK:
+   - `apksigner verify --print-certs Project894-android-<version>.apk` → SHA-256 `bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b`
+   - version (`versionName`/`versionCode`) correcta
+3. Mover la seccion `[Unreleased]` del `CHANGELOG.md` a la nueva version y actualizar `RELEASE_NOTES.md`, `README.md` (release activo), `NOTA_ARTEFACTOS.md` y las guias Android si hubo cambios visibles.
+4. Crear el tag/release `v<version>` y adjuntar `Project894-android-<version>.apk`.
+5. Comprobar desde un dispositivo con la version anterior que la actualizacion in-app la detecta e instala.
+
+Un APK firmado con otra clave no actualiza las instalaciones existentes: no se publica.
+
 ## Checklist previo a publicar
 
-- nombre correcto del archivo `Project894.exe`
+- nombre correcto del archivo (`Project894.exe`, `Project894-android-<version>.apk`)
+- en Android, huella SHA-256 de firma identica a la de las versiones anteriores
 - version correcta en changelog y release notes
 - ausencia total de codigo fuente
 - ausencia de datos de usuario o artefactos intermedios

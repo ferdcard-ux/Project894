@@ -11,10 +11,10 @@ Este repositorio no incluye el codigo fuente de la aplicacion. Su funcion es cen
 
 ## Estado actual
 
-- Release activo: **`v2.0.13`** (Android)
-- Fecha de referencia documental: `2026-10-15`
+- Release activo: **`v2.0.14`** (Android)
+- Fecha de referencia documental: `2026-11-14`
 - Artefactos publicados por plataforma:
-  - **Android:** `Project894-android-2.0.13.apk`
+  - **Android:** `Project894-android-2.0.14.apk`
   - **Linux / Windows:** en desarrollo (las versiones anteriores fueron retiradas; ver [NOTA_ARTEFACTOS.md](NOTA_ARTEFACTOS.md))
 
 ## Que incluye la aplicacion
@@ -35,7 +35,10 @@ Aplicacion de escritorio en PySide6 para automatizar la consulta y gestion local
 - control de cambios pendientes antes de cerrar o salir
 
 ### Android
-Aplicacion nativa Android con Jetpack Compose para consultar evidencias, calificaciones, anuncios y eventos de calendario desde Zajuna SENA.
+Aplicacion nativa Android con Jetpack Compose para consultar evidencias, calificaciones, anuncios y eventos de calendario desde Zajuna SENA, y los juicios evaluativos de Sofia Plus.
+- **pestana SofiaPlus** (desde 2.0.14): juicios evaluativos por competencia y resultado de aprendizaje, con filtros y busqueda; usa las mismas credenciales de Zajuna, se actualiza una vez al dia y queda disponible sin conexion (Sofia Plus solo ofrece HTTP: la app lo advierte y pide autorizacion antes de la primera extraccion)
+- **pestana Por evaluar** (desde 2.0.14): evidencias entregadas que aun esperan calificacion
+- **avisos sin repeticiones** (desde 2.0.14): cada evento se notifica una sola vez y el progreso de sincronizacion usa una unica notificacion
 - interfaz moderna con Material Design 3 (incluye tema oscuro con bordes de tarjeta visibles)
 - login automatizado mediante WebView, con sesion persistente (fast-path sin re-login cuando la sesion sigue activa)
 - scraping integrado con OkHttp + Jsoup (selectores adaptados al CMS de Zajuna)
@@ -44,13 +47,13 @@ Aplicacion nativa Android con Jetpack Compose para consultar evidencias, calific
 - acciones por pulsacion larga: seleccionar texto, compartir y abrir en navegador
 - notificacion persistente "Evento vence hoy" para vencimientos del dia
 - sincronizacion en segundo plano con WorkManager
-- busqueda, filtros por estado con contador por pestana (Todas, Pendientes, Evaluadas, Vencidas) y ordenamiento A-Z por codigo por defecto
+- busqueda, filtros por estado con contador por pestana (Todas, Pendientes, Evaluadas, Por evaluar, Vencidas) y ordenamiento A-Z por codigo por defecto
 - etiquetas multiples por tarjeta (por ejemplo EVALUADA + VENCIDA), apiladas solo cuando ambas aplican
 - **detalle in-app de evidencia**: al tocar la tarjeta se abre el contenido limpio de la evidencia, incluida la seccion "Estado de la entrega" (intento, estado de la entrega, estado de la calificacion, ultima modificacion, archivos y comentarios), con un bloque informativo que varia segun la pestana de origen
 - **descarga de archivos adjuntos** desde la fila "Archivos enviados", eligiendo donde guardarlos sin salir de la app
 - **etiquetas manuales** en la pestana "Todas" (ENVIADA, NO ASIGNADA, PENDIENTE, VENCIDA) con bloqueo de las que ya asigna el sistema y retirada automatica si Zajuna evalua la evidencia
-- exportacion de evidencias a Excel (escritor XLSX propio, sin dependencias)
-- notificaciones push con 4 canales nativos
+- exportacion a Excel de evidencias (por estado, incluida "Por evaluar") y de los juicios de Sofia Plus (escritor XLSX propio, sin dependencias)
+- notificaciones push con 5 canales nativos (sincronizacion, alertas, calendario, anuncios y notificaciones del sistema Zajuna)
 - cache-first para carga instantanea
 - indicador de estado de sincronizacion en la pantalla de evidencias
 - actualizacion in-app: deteccion automatica en segundo plano cada 12h + verificacion manual, descarga e instalacion desde la misma app
@@ -86,6 +89,23 @@ Artefactos disponibles por plataforma:
 3. Abre el archivo APK e instala.
 4. Al abrir la app por primera vez, lee y acepta los terminos y condiciones para continuar.
 
+#### Verificar que el APK es autentico
+
+Todos los APK oficiales desde la `2.0.10` estan firmados con el mismo certificado:
+
+```
+SHA-256: bdcf8658236171733ef576587db4db2303a64e9d270e66e9b0c6f3ea6e82e25b
+```
+
+Con el Android SDK puedes comprobarlo antes de instalar:
+
+```bash
+apksigner verify --print-certs Project894-android-<version>.apk
+```
+
+Si la huella no coincide, no instales el archivo. Un APK con otra firma tampoco podria actualizar una instalacion existente.
+
+
 ## Documentacion principal
 
 - [README-Win.md](README-Win.md) — Documentacion para Windows
@@ -111,13 +131,18 @@ Este repositorio publico mantiene documentacion y material de publicacion:
 |-- CONTRIBUTING.md
 |-- DISCLAIMER.md
 |-- LICENSE
+|-- NOTA_ARTEFACTOS.md
 |-- README.md
 |-- README-Win.md
 |-- RELEASE_NOTES.md
 |-- SECURITY.md
-|   |-- FAQ-Android.md
-|   |-- USERGUIDE-Android.md
 `-- docs/
+    |-- ARCHITECTURE.md
+    |-- FAQ.md
+    |-- FAQ-Android.md
+    |-- PUBLISHING.md
+    |-- USERGUIDE.md
+    `-- USERGUIDE-Android.md
 ```
 
 ## Alcance del repositorio publico
